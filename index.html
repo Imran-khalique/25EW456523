@@ -1,0 +1,714 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <!-- metas -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Imran Khalique — Cybersecurity Operations Engineer. SecOps, vulnerability management, detection engineering, and identity controls.">
+        <meta name="keywords" content="cybersecurity, SecOps, vulnerability management, detection engineering, SIEM, SSPM, NIST CSF, Imran Khalique">
+        <!-- title -->
+        <title>Imran Khalique — Cybersecurity Operations Engineer</title>
+        <!-- favicon -->
+        <link href="img/favicon.ico" rel="icon" type="image/png">
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+        <!-- owl carousel CSS -->
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <!-- magnific-popup CSS -->
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <!-- animate.min CSS -->
+        <link rel="stylesheet" href="css/animate.min.css">
+        <!-- Font Icon Core CSS -->
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/et-line.css">
+        <!-- Core Style Css -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Light additions for new sections (case studies, skills groups, education, hero stats) -->
+        <style>.hero-stats-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 0; margin: 40px auto 0; max-width: 880px; border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(255,255,255,0.2); } .hero-stats-strip .stat { flex: 1; min-width: 160px; padding: 18px 14px; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); } .hero-stats-strip .stat:last-child { border-right: 0; } .hero-stats-strip .stat .num { color: #fff; font-size: 28px; font-weight: 700; display: block; line-height: 1.1; } .hero-stats-strip .stat .lbl { color: rgba(255,255,255,0.85); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px; display: block; } .exp-section { padding-bottom: 70px; } .exp-card { background: #fff; padding: 35px 40px; margin-bottom: 30px; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.1); border-left: 3px solid #ed3a3a; } .exp-card .role { font-weight: 700; font-size: 22px; color: #222; margin: 0; font-family: 'Montserrat', sans-serif; } .exp-card .org { color: #ed3a3a; font-size: 14px; font-weight: 500; margin: 4px 0 0; font-style: italic; } .exp-card .dates { color: #999; font-size: 12px; letter-spacing: 1.5px; font-weight: 600; } .exp-card .summary { margin: 18px 0; color: #748182; font-size: 14px; line-height: 1.7; } .exp-card .impact-title { color: #222; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin: 22px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #eee; } .exp-card ul { color: #748182; font-size: 14px; line-height: 1.85; padding-left: 20px; margin: 0; } .exp-card ul li { margin-bottom: 6px; } .exp-card ul li strong { color: #222; } .case-card { background: #fff; padding: 30px 28px; margin-bottom: 30px; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.1); transition: all 0.3s; height: calc(100% - 30px); display: flex; flex-direction: column; } .case-card:hover { transform: translateY(-5px); box-shadow: 0 14px 34px -8px rgba(0,0,0,0.16); } .case-card .case-tag { display: inline-block; color: #ed3a3a; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; } .case-card h4 { font-weight: 700; font-size: 18px; color: #222; margin: 0 0 8px; line-height: 1.35; font-family: 'Montserrat', sans-serif; } .case-card .metric { color: #748182; font-style: italic; font-size: 13px; margin-bottom: 16px; } .case-card .row-meta { font-size: 13px; color: #555; margin: 8px 0; line-height: 1.6; } .case-card .row-meta strong { color: #222; font-weight: 600; } .case-card .desc { color: #748182; font-size: 13px; line-height: 1.7; margin: 12px 0; flex-grow: 1; } .case-card .outcome { font-size: 13px; line-height: 1.6; color: #748182; padding-top: 14px; margin-top: 14px; border-top: 1px solid #eee; } .case-card .outcome strong { color: #ed3a3a; } /* Evidence thumbnail row — clickable mini previews that open in a lightbox */.case-evidence { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #eee; } .case-evidence .ev-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; color: #999; width: 100%; margin-bottom: 4px; } .case-evidence .ev-thumb { width: 60px; height: 44px; overflow: hidden; cursor: pointer; border: 1px solid #e5e5e5; transition: all 0.2s; position: relative; display: block; } .case-evidence .ev-thumb:hover { border-color: #ed3a3a; transform: scale(1.05); } .case-evidence .ev-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; } .case-evidence .ev-thumb .ev-overlay { position: absolute; inset: 0; background: rgba(237,58,58,0); display: flex; align-items: center; justify-content: center; transition: background 0.2s; } .case-evidence .ev-thumb:hover .ev-overlay { background: rgba(237,58,58,0.7); } .case-evidence .ev-thumb .ev-overlay i { color: #fff; font-size: 14px; opacity: 0; transition: opacity 0.2s; } .case-evidence .ev-thumb:hover .ev-overlay i { opacity: 1; } /* Make case study columns equal-height via flexbox */.case-row { display: flex; flex-wrap: wrap; } .case-row > [class*="col-"] { display: flex; flex-direction: column; } .skill-group { margin-bottom: 35px; } .skill-group .group-title { color: #222; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #ed3a3a; display: inline-block; font-family: 'Montserrat', sans-serif; } .skill-group .pill-row { display: flex; flex-wrap: wrap; gap: 10px; } .skill-group .pill { background: #fff; padding: 10px 16px; font-size: 13px; font-weight: 500; color: #444; border: 1px solid #e8e8e8; transition: all 0.25s; font-family: 'Poppins', sans-serif; } .skill-group .pill:hover { background: #ed3a3a; color: #fff; border-color: #ed3a3a; } .edu-card { background: #fff; padding: 35px 28px; text-align: center; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.1); margin-bottom: 30px; min-height: 230px; transition: all 0.3s; } .edu-card:hover { transform: translateY(-5px); box-shadow: 0 14px 34px -8px rgba(0,0,0,0.16); } .edu-card .icon { font-size: 42px; color: #ed3a3a; margin-bottom: 14px; display: block; } .edu-card h5 { font-weight: 700; font-size: 17px; color: #222; margin: 8px 0 6px; font-family: 'Montserrat', sans-serif; } .edu-card .meta { color: #748182; font-size: 13px; margin: 4px 0; line-height: 1.5; } .edu-card .meta strong { color: #222; font-weight: 600; } .edu-card .meta a { color: #ed3a3a; } .edu-card .badge-progress { display: inline-block; background: #ed3a3a; color: #fff; padding: 4px 12px; font-size: 10px; letter-spacing: 1.5px; font-weight: 600; margin-top: 8px; } .section-subtitle { color: #999; font-style: italic; font-size: 14px; text-align: center; margin-top: -50px; margin-bottom: 50px; } @media (max-width: 768px) { .exp-card {  padding: 26px 22px; }  .exp-card .dates {  display: block;  margin-top: 8px; }  .case-card {  height: auto; } } .static-name { color: #fff; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 72px; letter-spacing: 1px; line-height: 1.05; margin: 0 0 18px; text-shadow: 0 2px 30px rgba(0,0,0,0.4); } @media (max-width: 768px) { .static-name {  font-size: 52px;  letter-spacing: 0.5px; } } .name-tagline { color: rgba(255,255,255,0.92); font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 22px; letter-spacing: 4px; text-transform: uppercase; margin: 0; line-height: 1.2; } .name-tagline .cd-words-wrapper b { font-weight: 300; } @media (max-width: 768px) { .name-tagline {  font-size: 14px;  letter-spacing: 2px; } } /* Hero background video — sits behind the template's existing dark .header:after overlay (which is at opacity 0.65) so text stays readable */.header .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; } .header:after { z-index: 2; } .header .v-middle { z-index: 11; position: relative; } /* Scroll-down indicator at bottom of hero */.scroll-down { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); z-index: 12; color: rgba(255,255,255,0.85); text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: color 0.2s, opacity 0.2s; } .scroll-down:hover, .scroll-down:focus { color: #fff; text-decoration: none; opacity: 0.9; } .scroll-down .scroll-text { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; } .scroll-down .scroll-arrow { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.5); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; animation: scrollBounce 2s ease-in-out infinite; } @keyframes scrollBounce { 0%, 20%, 50%, 80%, 100% {  transform: translateY(0); }  40% {  transform: translateY(-8px); }  60% {  transform: translateY(-4px); } } @media (max-width: 768px) { .scroll-down {  bottom: 20px; }  .scroll-down .scroll-text {  font-size: 10px; } } /* Centered nav */.navbar-default .navbar-collapse { text-align: center; } .nav-centered { float: none !important; display: inline-block; vertical-align: top; }</style>
+        <!--[if lt IE 9]-->
+        <script src="js/html5shiv.min.js"></script>
+        <!--[endif]-->
+    </head>
+    <body>
+        <!-- ====== Preloader ======  -->
+        <div class="loading">
+            <div class="load-circle">
+</div>
+        </div>
+        <!-- ======End Preloader ======  -->
+        <!-- ====== Navigation ======  -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-icon-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="nav-icon-collapse">
+                    <ul class="nav navbar-nav nav-centered">
+                        <li>
+                            <a href="#" data-scroll-nav="0" class="active">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" data-scroll-nav="1">About</a>
+                        </li>
+                        <li>
+                            <a href="#" data-scroll-nav="3">Experience</a>
+                        </li>
+                        <li>
+                            <a href="#" data-scroll-nav="4">Case Studies/Projects</a>
+                        </li>
+                        <li>
+                            <a href="#" data-scroll-nav="5">Skills</a>
+                        </li>
+                        <li>
+                            <a href="#" data-scroll-nav="6">Professional Feedback</a>
+                        </li>
+                        <li>
+                            <a href="#" data-scroll-nav="7">Education + Certs</a>
+                        </li>
+                        <li>
+                            <a href="#" data-scroll-nav="9">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- ====== End Navigation ======  -->
+        <!-- ====== Header ======  -->
+        <section id="home" class="header" data-scroll-index="0" style="background-image: url(img/bg.jpg);">
+            <!-- Background video: drop your file at img/hero-bg.mp4 (and optional .webm for better browser support). Falls back to bg.jpg if video fails. -->
+            <video class="hero-video" autoplay muted loop playsinline poster="img/bg.jpg">
+                <source src="img/hero-bg.mp4" type="video/mp4">
+                <source src="img/hero-bg.webm" type="video/webm">
+            </video>
+            <div class="v-middle">
+                <div class="container">
+                    <div class="row">
+                        <div class="caption">
+                            <h1 class="static-name">IMRAN KHALIQUE</h1>
+                            <h2 class="cd-headline clip name-tagline"> <span class="cd-words-wrapper"> <b class="is-visible">Cybersecurity Operations Lead</b><b>Vulnerability Manager</b><b>Detection architect</b><b>Identity + Access Practitioner</b></span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Scroll-down indicator -->
+            <a href="#" class="scroll-down" data-scroll-nav="1" aria-label="Scroll to About section"> <span class="scroll-text">Scroll<br></br></span> <span class="scroll-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span> </a>
+        </section>
+        <!-- ====== End Header ======  -->
+        <!-- ====== About ======  -->
+        <section class="hero section-padding pb-70" data-scroll-index="1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-5 col-md-5">
+                        <div class="hero-img mb-30">
+                            <img src="img/hero.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-xs-7 col-md-7">
+                        <div class="content mb-30">
+                            <h3>About</h3>
+                            <p>From a young age, I was the kid who took apart toy RC cars to figure out how they worked. That curiosity grew into a knack for problem-solving — and the RC cars eventually gave way to computers. By 19, I'd gone from building PCs from scratch to cracking WEP, an outdated WiFi protocol now replaced by WPA.</p>
+                            <p><br></p>
+                            <p>Fastforward to present day: I started my career as an IT desktop engineer at <b>Ernst &amp; Young</b>, supporting one of the largest professional-services environments in the world, then grew into IT operations and full-time security at <b>Audax Group</b>, a small private equity firm. Along the way I owned identity, endpoint, vulnerability management, awareness training, and digital risk protection — first as the sole IT engineer in the NYC office, then as the firm's go-to person for hardening, detection, and response.</p>
+                            <p><br></p>
+                            <p></p>
+                            <a href="https://www.linkedin.com/in/imrankhalique/" target="_blank" rel="noopener"> <span class="buton buton-bg">View LinkedIn</span> </a>
+                            <a href="files/ImranKhaliqueResume.pdf" target="_blank" rel="noopener"> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====== End About ======  -->
+        <!--====== Experience ======-->
+        <section class="exp-section section-padding bg-gray" data-scroll-index="3">
+            <div class="container">
+                <div class="section-head">
+                    <h3>Experience</h3>
+                </div>
+                <p class="section-subtitle">A decade across IT/Security</p>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        <div class="exp-card">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h4 class="role">Cybersecurity Operations Engineer/Administrator</h4>
+                                    <p class="org">Audax Group Private Equity — New York, NY</p>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span class="dates">SEP 2022 – JAN 2026</span>
+                                </div>
+                            </div>
+                            <p class="summary">Dedicated role to build and run the firm's enterprise security operations program. Owned vulnerability management, endpoint hardening, identity controls, cybersecurity awareness, digital risk protection and acted as the technical lead partnering with the firm's MSSP, pentest, and SaaS-security vendors.</p>
+                            <div class="impact-title">Highlights</div>
+                            <ul>
+                        <li><strong>Reduced organizational attack surface by 60%</strong> by architecting the firm's enterprise Vulnerability Management (VM) program across Rapid7 InsightVM and Tenable, applying CIS Benchmark-aligned baselines, structured scan cadence, and remediation workflows integrated with change management processes.</li>
+                        <li><strong>Cut phishing click-rates 45% over 24 months</strong> as designer and administrator of the firm's Security Awareness and Training (SAT) program via KnowBe4; executing simulated phishing campaigns, new-hire onboarding, and leadership-facing behavioral metric reporting.</li>
+                        <li><strong>Achieved ~80-90% endpoint hardening compliance</strong> by establishing and enforcing a CIS Benchmark security baseline across the Windows endpoint estate via Microsoft Intune MDM and Group Policy Objects (GPOs), eliminating long-standing configuration drift and reducing exploitable attack vectors.</li>
+                        <li><strong>Built executive cyber-risk reporting framework</strong> aligned to NIST CSF functions - Identify, Protect, Detect, Respond, Recover - translating raw security signals into KPIs that gave leadership real-time visibility into threat posture, vulnerability exposure, and IR effectiveness for governance and budget decisions.</li>
+                        <li><strong>Designed and operated a Third-Party Risk Management (TPRM) program</strong> to vet, document, and stage approval for on-premises and SaaS application integrations; incorporating SOC 2 control mapping, data-handling validation, and risk scoring to reduce Shadow IT exposure and enforce the firm's information security standards at the point of vendor onboarding.</li>
+                        <li><strong>Led MSSP/MDR oversight and detection engineering</strong> tuning SIEM detection rules to reduce alert fatigue, deploying SOAR playbook initiatives, and managing log source integration lifecycles across the security stack driving MTTR to approximately 1 day and achieving a 75% reduction in non-actionable escalations.</li>
+                        <li><strong>Deployed SaaS Security Posture Management (SSPM)</strong> via Adaptive Shield across 20+ enterprise applications continuously monitoring for configuration drift, enforcing least-privilege access controls, managing the vendor relationship end-to-end, and remediating critical misconfigurations including controls relevant to the Microsoft Midnight Blizzard threat campaign.</li>
+                        <li><strong>Authored and maintained security governance documentation</strong> including Incident Response (IR) playbooks, access control policies, and operational SOPs ensuring controls were auditable, repeatable, and aligned to CIS and NIST CSF. Supported audit readiness by maintaining documented evidence of vulnerability remediation, SSPM configuration controls, and TPRM assessments across the firm's cybersecurity program.</li>
+                        <li><strong>Coordinated annual penetration testing engagements</strong> by defining scope, managing vendor coordination, triaging findings by risk severity, and driving remediation through to verified closure ensuring the firm's security posture was validated against real-world adversarial techniques.</li>
+                        <li><strong>Administered executive Digital Risk Protection (DRP)</strong> by leading the transition from ZeroFox to ReliaQuest DRP and deploying DeleteMe for PII removal - reducing the external attack surface and profiling risk for firm leadership through continuous monitoring of brand exposure, data broker presence, and open-source intelligence (OSINT) signals.</li>
+                            </ul>
+                        </div>
+                        <div class="exp-card">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h4 class="role">IT Operations Engineer/Administrator</h4>
+                                    <p class="org">Audax Group Private Equity — New York, NY</p>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span class="dates">JAN 2020 – AUG 2022</span>
+                                </div>
+                            </div>
+                            <p class="summary">Sole IT engineer for the New York office and primary technology partner for the firm's senior executives. Owned the Microsoft 365 and identity stack day to day, ran endpoint and network operations across multiple sites, and was the on-the-ground lead for the firm's 22nd floor build out and post-pandemic re-opening.</p>
+                            <ul>
+                                <li>Supported and maintained enterprise IT infrastructure across Windows environments, Microsoft 365, mobile devices, and collaboration platforms, ensuring reliable day-to-day operations for onsite and remote employees.</li>
+                                <li>Administered user accounts and endpoint management systems including Active Directory, Entra ID, Intune, Exchange Online, and Teams, improving provisioning efficiency and access management across the organization.</li>
+                                <li>Supported Meraki firewalls, switches, and access points across wired and wireless infrastructure.</li>
+                                <li>Led asset lifecycle, imaging, patching, and hardware refresh across multiple offices.</li>
+                                <li>Delivered white-glove executive support, home-office networking, Meraki, conferencing, and secure remote access.</li>
+                            </ul>
+                        </div>
+                        <div class="exp-card">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h4 class="role">IT Desktop Engineer</h4>
+                                    <p class="org">Ernst &amp; Young — New York, NY</p>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <span class="dates">JUL 2015 – DEC 2019</span>
+                                </div>
+                            </div>
+                            <p class="summary">Frontline desktop and infrastructure engineer in one of the largest Big Four environments in the world. Worked across the Windows and Mac estate and partnered directly with the cybersecurity team on vulnerability scans, forensics, and pentesting.</p>
+                            <ul>
+                                <li>Resolved Windows and macOS issues across local and remote offices, including Microsoft 365 migration, VMware, Citrix, SCCM, and Avecto.</li>
+                                <li>Liaised with the cybersecurity team on vulnerability scans and forensic file retrieval for litigation support.</li>
+                                <li>Assisted in ad-hoc penetration-testing engagements using tools such as Reaper and PWNED.</li>
+                                <li>Led MDF/IDF closet server debugging and replacement projects.</li>
+                                <li>Facilitated WTEY (Welcome to Ernst &amp; Young) seminars, onboarding new hires onto firm hardware and technical resources.</li>
+                                <li>Ran asset management against firm retention policies.</li>
+                                <li>Maintained Crestron, Cisco VC, and Microsoft Surface Hub conference rooms.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Experience ======-->
+        <!--====== Case Studies ======-->
+        <section class="case-section section-padding pb-70" data-scroll-index="4">
+            <div class="container">
+                <div class="section-head">
+                    <h3>Case Studies/Projects</h3>
+                </div>
+                <p class="section-subtitle">Selected security programs I built and ran</p>
+                <div class="row case-row">
+                 <div class="col-md-4 col-sm-6">
+                <div class="case-card">
+                    <span class="case-tag">Remediation Automation</span>
+                    <h4>PowerShell Remediation Scripts</h4>
+                    <p class="metric">Automated CIS Benchmark and CVE remediation across the Windows endpoint estate</p>
+                    <p class="row-meta"><strong>Stack:</strong> PowerShell, Windows Registry, CIS Benchmarks, Microsoft Intune, Group Policy</p>
+                    <p class="row-meta"><strong>Role:</strong> Author and operator</p>
+                    <p class="desc">Authored a suite of PowerShell remediation scripts to enforce CIS Benchmark controls and patch known CVE exposures across the firm's Windows environment. Deployed via Intune and Group Policy for consistent, repeatable, and auditable remediation at scale without manual intervention on individual endpoints. Scripts covered disabling SMBv1 (the protocol behind WannaCry and NotPetya), removing unnecessary IIS attack surface, remediating the MS13-098 certificate validation vulnerability across 32-bit and 64-bit registry hives.</p>
+                    <p class="outcome"><strong>Outcome:</strong> Controls deployed consistently across the endpoint estate, reducing remediation time from hours to minutes and producing audit-defensible evidence of control enforcement at scale.</p>
+                    <div class="case-evidence" data-mfp-gallery="scripts">
+                        <span class="ev-label">Evidence</span>
+                        <a class="ev-thumb" href="img/cases/scripts/01.png" title="TurnOffSMBv1 - Disable SMBv1 Protocol"> <img src="img/cases/scripts/01.png" alt="SMBv1 script"> <span class="ev-overlay"><i class="fa fa-search-plus"></i></span> </a>
+                        <a class="ev-thumb" href="img/cases/scripts/02.png" title="Remove IIS - Attack Surface Reduction"> <img src="img/cases/scripts/02.png" alt="Remove IIS script"> <span class="ev-overlay"><i class="fa fa-search-plus"></i></span> </a>
+                        <a class="ev-thumb" href="img/cases/scripts/03.png" title="MS13-098 Certificate Padding Check Remediation"> <img src="img/cases/scripts/03.png" alt="MS13-098 script"> <span class="ev-overlay"><i class="fa fa-search-plus"></i></span> </a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="case-card">
+                            <span class="case-tag">Vuln Management</span>
+                            <h4>Enterprise Vulnerability Management</h4>
+                            <p class="metric">60% reduction in organizational attack surface</p>
+                            <p class="row-meta"><strong>Stack:</strong> Rapid7 InsightVM, Tenable, CIS Benchmarks, Intune, GPO, PowerShell</p>
+                            <p class="row-meta"><strong>Role:</strong> Lead architect and operator</p>
+                            <p class="desc">Took a fragmented scanning footprint and rebuilt it into a unified vulnerability-management architecture aligned to CIS controls. Defined scan cadence and asset coverage, integrated findings into ticketing, and authored automated remediation in PowerShell and Python pushed via Intune and GPO so fixes actually reached endpoints.</p>
+                            <p class="outcome"><strong>Outcome:</strong> Sustained 60% reduction in attack surface, measurable repeatable patch compliance, and a defensible posture for SOC 2 and pentest review.</p>
+                            <div class="case-evidence" data-mfp-gallery="vuln">        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="case-card">
+                            <span class="case-tag">Awareness</span>
+                            <h4>Cybersecurity Awareness Program</h4>
+                            <p class="metric">45% drop in phishing click rate over 24 months</p>
+                            <p class="row-meta"><strong>Stack:</strong> KnowBe4, Microsoft Defender, Mimecast</p>
+                            <p class="row-meta"><strong>Role:</strong> Program owner</p>
+                            <p class="desc">Built and ran the firm's awareness program from the ground up — simulated-phishing strategy, training cadence, role-based content, and reporting. Coordinated with HR for onboarding integration and partnered with leadership on metrics that mattered to them.</p>
+                            <p class="outcome"><strong>Outcome:</strong> 45% reduction in phishing click rates over 24 months and a measurably more security-aware workforce.</p>
+                            <div class="case-evidence" data-mfp-gallery="awareness">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="case-card">
+                            <span class="case-tag">Detection &amp; Response</span>
+                            <h4>MSSP / MDR Oversight &amp; Detection Tuning</h4>
+                            <p class="metric">Higher-fidelity alerting, faster triage, fewer false positives</p>
+                            <p class="row-meta"><strong>Stack:</strong> Reliaquest MDR, Exabeam SIEM, Microsoft Defender, CrowdStrike, Darktrace</p>
+                            <p class="row-meta"><strong>Role:</strong> Internal lead for MSSP partnership and SIEM tuning</p>
+                            <p class="desc">Acted as the firm's technical owner for the MSSP relationship. Triaged escalations, validated severity and business impact, and partnered with Reliaquest on detection tuning and use-case development. Cut alert noise so escalations meant something.</p>
+                            <p class="outcome"><strong>Outcome:</strong> Cleaner detections, more credible incident escalations to leadership, and a stronger working partnership with our MDR provider.</p>
+                            <div class="case-evidence" data-mfp-gallery="mssp">        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="case-card">
+                            <span class="case-tag">Executive Protection</span>
+                            <h4>Executive Digital Risk Protection</h4>
+                            <p class="metric">Reduced exposed PII and external profiling risk for firm leadership</p>
+                            <p class="row-meta"><strong>Stack:</strong> DeleteMe, Reliaquest Digital Risk Protection, threat intel feeds</p>
+                            <p class="row-meta"><strong>Role:</strong> Program owner for executive protection</p>
+                            <p class="desc">Stood up an executive DRP program covering the firm's senior leaders. Continuously removed exposed PII via DeleteMe and monitored brand and exec exposure with Reliaquest DRP. Tied DRP findings into real-time CVE and IOC analysis to assess relevant exposure.</p>
+                            <p class="outcome"><strong>Outcome:</strong> Materially smaller external attack surface around firm executives and a documented, repeatable DRP workflow.</p>
+                            <div class="case-evidence" data-mfp-gallery="drp">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="case-card">
+                            <span class="case-tag">Cloud / SaaS</span>
+                            <h4>SaaS Security Posture Management</h4>
+                            <p class="metric">Continuous configuration hardening across SaaS platforms</p>
+                            <p class="row-meta"><strong>Stack:</strong> Adaptive Shield, Microsoft Entra ID, Conditional Access, SSO/SAML</p>
+                            <p class="row-meta"><strong>Role:</strong> Administrator</p>
+                            <p class="desc">Brought Adaptive Shield in to monitor SaaS configuration drift across the firm's critical SaaS platforms. Worked with application owners to remediate misconfigurations and enforce baseline policies, while tightening identity and conditional access in Entra ID.</p>
+                            <p class="outcome"><strong>Outcome:</strong> Continuous SSPM coverage, fewer one-off misconfigurations, and a stronger identity boundary into SaaS.</p>
+                            <div class="case-evidence" data-mfp-gallery="sspm">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="case-card">
+                            <span class="case-tag">Risk Reporting</span>
+                            <h4>Executive Cyber Risk Reporting Framework</h4>
+                            <p class="metric">Real-time visibility into threat, vulnerability, and response posture</p>
+                            <p class="row-meta"><strong>Stack:</strong> Internal KPI model, Rapid7, Defender, KnowBe4, MSSP outputs</p>
+                            <p class="row-meta"><strong>Role:</strong> Designer</p>
+                            <p class="desc">Designed an executive-facing reporting framework so leadership could see the security program's posture without wading through tool dashboards. Translated raw signals into a small set of KPIs aligned to NIST CSF functions — identify, protect, detect, respond, recover.</p>
+                            <p class="outcome"><strong>Outcome:</strong> A reporting cadence leadership actually used for decision-making and budget conversations.</p>
+                            <div class="case-evidence" data-mfp-gallery="reporting">                    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="case-card">
+                            <span class="case-tag">Pentesting</span>
+                            <h4>Annual Penetration Testing Program</h4>
+                            <p class="metric">End-to-end coordination, remediation, and verification</p>
+                            <p class="row-meta"><strong>Stack:</strong> External pentest vendors, internal ticketing, Rapid7, Tenable</p>
+                            <p class="row-meta"><strong>Role:</strong> Internal program lead</p>
+                            <p class="desc">Owned the firm's annual pentest engagements from scoping through verification. Coordinated rules of engagement, evidence handling, finding triage, remediation planning, and re-test verification so findings actually closed instead of aging out.</p>
+                            <p class="outcome"><strong>Outcome:</strong> A pentest program that produced action, not just reports.</p>
+                            <div class="case-evidence" data-mfp-gallery="pentest">                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Case Studies ======-->
+        <!--====== Skills ======-->
+        <section class="skills-section section-padding bg-gray pb-70" data-scroll-index="5">
+            <div class="container">
+                <div class="section-head">
+                    <h3>Skills &amp; Tools</h3>
+                </div>
+                <p class="section-subtitle"></p>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="skill-group">
+                                    <div class="group-title">Identity &amp; Access</div>
+                                    <div class="pill-row">
+                                        <span class="pill">Microsoft Entra ID</span>
+                                        <span class="pill">Active Directory</span>
+                                        <span class="pill">Conditional Access</span>
+                                        <span class="pill">SSO / SAML</span>
+                                        <span class="pill">Intune</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="skill-group">
+                                    <div class="group-title">Endpoint &amp; EDR</div>
+                                    <div class="pill-row">
+                                        <span class="pill">CrowdStrike</span>
+                                        <span class="pill">Microsoft Defender</span>
+                                        <span class="pill">CIS Benchmarks</span>
+                                        <span class="pill">GPO Hardening</span>
+                                        <span class="pill">Intune</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="skill-group">
+                                    <div class="group-title">Vulnerability &amp; Threat Mgmt</div>
+                                    <div class="pill-row">
+                                        <span class="pill">Rapid7 InsightVM</span>
+                                        <span class="pill">Tenable</span>
+                                        <span class="pill">CVE / IOC Analysis</span>
+                                        <span class="pill">Pentest Oversight</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="skill-group">
+                                    <div class="group-title">Detection &amp; Response</div>
+                                    <div class="pill-row">
+                                        <span class="pill">Exabeam SIEM</span>
+                                        <span class="pill">Reliaquest MDR</span>
+                                        <span class="pill">Darktrace</span>
+                                        <span class="pill">SOAR Automation</span>
+                                        <span class="pill">Incident Response</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="skill-group">
+                                    <div class="group-title">Cloud, SaaS &amp; Email</div>
+                                    <div class="pill-row">
+                                        <span class="pill">Microsoft 365</span>
+                                        <span class="pill">Adaptive Shield (SSPM)</span>
+                                        <span class="pill">Mimecast</span>
+                                        <span class="pill">Zscaler</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="skill-group">
+                                    <div class="group-title">Risk, Governance &amp; Awareness</div>
+                                    <div class="pill-row">
+                                        <span class="pill">NIST CSF</span>
+                                        <span class="pill">SOC 2 Analysis</span>
+                                        <span class="pill">Third-Party Risk</span>
+                                        <span class="pill">KnowBe4</span>
+                                        <span class="pill">DeleteMe</span>
+                                        <span class="pill">Digital Shadows / RQ DRP</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="skill-group">
+                                    <div class="group-title">Automation &amp; Scripting</div>
+                                    <div class="pill-row">
+                                        <span class="pill">PowerShell</span>
+                                        <span class="pill">Python</span>
+                                        <span class="pill">KPI Reporting</span>
+                                        <span class="pill">SIEM Tuning</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Skills ======-->
+        <!--====== Testimonials ======-->
+        <section class="clients section-padding" data-scroll-index="6">
+            <div class="container">
+                <div class="row">
+                    <div class="section-head">
+                        <h3>Professional Feedback</h3>
+                    </div>
+                    <p class="section-subtitle">Selected feedback from annual reviews</p>
+                    <div class="col-md-offset-1 col-md-10">
+                        <div class="owl-carousel owl-theme text-center">
+                            <div class="citem">
+                                <div class="author-img">
+                                    <img src="img/clients/1.jpg" alt="">
+                                </div>
+                                <p>"Imran has demonstrated exceptional growth this year, significantly expanding his expertise in vulnerability management, incident response, SIEM log management, and vendor management. Leading bi-weekly meetings with the RQ team, he has driven detection adjustments that increased the efficiency and effectiveness of our capabilities."</p>
+                                <h6>Audax Group</h6>
+                                <span>Cybersecurity Leadership</span>
+                            </div>
+                            <div class="citem">
+                                <div class="author-img">
+                                    <img src="img/clients/2.jpg" alt="">
+                                </div>
+                                <p>"Imran is incredibly efficient and productive with minimal oversight from management. He shares a sense of ownership of the NY office that allows him to prioritize tasks so office requests are not missed. He is resourceful and a self-starter — quick to identify issues and address them promptly."</p>
+                                <h6>Audax Group</h6>
+                                <span>IT Manager</span>
+                            </div>
+                            <div class="citem">
+                                <div class="author-img">
+                                    <img src="img/clients/3.jpg" alt="">
+                                </div>
+                                <p>"Imran is consistent and composed. He communicates clearly, handles feedback well, and maintains a high standard of discretion. His calm, even-keeled approach makes him easy to work with, especially in high-pressure situations."</p>
+                                <h6>Audax Group</h6>
+                                <span>Cybersecurity Leadership</span>
+                            </div>
+                            <div class="citem">
+                                <div class="author-img">
+                                    <img src="img/clients/1.jpg" alt="">
+                                </div>
+                                <p>"Imran takes a 'no task too small' attitude to requests that come his way. He is courteous and patient with any IT request, and on a day-to-day level he is always available and knowledgeable on ways to help."</p>
+                                <h6>Audax Group</h6>
+                                <span>Employee Feedback</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Testimonials ======-->
+        <!--====== Numbers ======-->
+        <div class="numbers section-padding text-center pb-70 bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="item">
+                            <span class="icon"><i class="fa fa-shield" aria-hidden="true"></i></span>
+                            <h3 class="counter">60%</h3>
+                            <p>Attack Surface Reduction</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="item">
+                            <span class="icon"><i class="fa fa-line-chart" aria-hidden="true"></i></span>
+                            <h3 class="counter">45%</h3>
+                            <p>Phishing Click-Rate Drop</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="item">
+                            <span class="icon"><i class="fa fa-laptop" aria-hidden="true"></i></span>
+                            <h3 class="counter">80%</h3>
+                            <p>Endpoint Compliance</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="item">
+                            <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                            <h3 class="counter">10+</h3>
+                            <p>Years IT &amp; Security</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== End Numbers ======-->
+        <!--====== Education & Certifications ======-->
+        <section class="education-section section-padding pb-70" data-scroll-index="7">
+            <div class="container">
+                <div class="section-head">
+                    <h3>Education &amp; Certifications.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="edu-card">
+                                    <i class="fa fa-graduation-cap icon" aria-hidden="true"></i>
+                                    <h5>Bachelor of Arts</h5>
+                                    <p class="meta"><strong>CUNY Queens College</strong></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="edu-card">
+                                    <i class="fa fa-shield icon" aria-hidden="true"></i>
+                                    <h5>CISSP</h5>
+                                    <p class="meta">(ISC)² — Currently preparing for exam</p>
+                                    <span class="badge-progress">IN PROGRESS · 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="edu-card">
+                                    <i class="fa fa-certificate icon" aria-hidden="true"></i>
+                                    <h5>CompTIA Security+</h5>
+                                    <p class="meta">Pearson VUE</p>
+                                    <p class="meta"><strong>May 2023</strong> · <a href="https://www.credly.com/badges/1073c85e-3a9c-4d3a-b2b8-bf61310bac9d/public_url" target="_blank" rel="noopener">Verify</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="edu-card">
+                                    <i class="fa fa-certificate icon" aria-hidden="true"></i>
+                                    <h5>Rapid7 InsightVM Certified</h5>
+                                    <p class="meta">Rapid7</p>
+                                    <p class="meta"><strong>March 2022</strong> · <a href="https://verify.skilljar.com/c/afb8v4c44kgc" target="_blank" rel="noopener">Verify</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="edu-card">
+                                    <i class="fa fa-certificate icon" aria-hidden="true"></i>
+                                    <h5>CompTIA A+</h5>
+                                    <p class="meta">Pearson VUE</p>
+                                    <p class="meta"><strong>April 2015</strong> · <a href="https://cp.certmetrics.com/comptia/en/public/verify/credential/G552LYE3C3VQK4TP" target="_blank" rel="noopener">Verify</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Education & Certifications ======-->
+        <!--====== Blog ======
+        <section class="blog section-padding" data-scroll-index="8">
+            <div class="container">
+                <div class="row">
+                    <div class="section-head">
+                        <h3>Blog</h3>
+                    </div>
+                    <div class="owl-carousel owl-theme">
+                        <div class="pitem">
+                            <div class="post-img">
+                                <img src="img/blog/1.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <h6 class="tag"><a href="blog/vuln-management.html">Vulnerability Management</a></h6>
+                                <h4><a href="blog/vuln-management.html">How We Cut Attack Surface 60% Without Buying a New Tool</a></h4>
+                                <span class="more"><a href="blog/vuln-management.html">Read More</a></span>
+                            </div>
+                        </div>
+                        <div class="pitem">
+                            <div class="post-img">
+                                <img src="img/blog/2.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <h6 class="tag"><a href="blog/mssp-tuning.html">Detection &amp; Response</a></h6>
+                                <h4><a href="blog/mssp-tuning.html">Working With an MSSP Without Losing the Plot</a></h4>
+                                <span class="more"><a href="blog/mssp-tuning.html">Read More</a></span>
+                            </div>
+                        </div>
+                        <div class="pitem">
+                            <div class="post-img">
+                                <img src="img/blog/3.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <h6 class="tag"><a href="blog/awareness-program.html">Security Awareness</a></h6>
+                                <h4><a href="blog/awareness-program.html">Building an Awareness Program Leadership Actually Cares About</a></h4>
+                                <span class="more"><a href="blog/awareness-program.html">Read More</a></span>
+                            </div>
+                        </div>
+                        <div class="pitem">
+                            <div class="post-img">
+                                <img src="img/blog/4.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <h6 class="tag"><a href="#0">Coming Soon</a></h6>
+                                <h4><a href="#0">Executive Digital Risk Protection: A Practical Playbook</a></h4>
+                                <span class="more"><a href="#0">Read More</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Blog ======-->
+        <!--====== Contact ======-->
+        <section class="contact section-padding bg-gray" data-scroll-index="9">
+            <div class="container">
+                <div class="row">
+                    <div class="section-head">
+                        <h3>Contact</h3>
+                    </div>
+                    <p class="section-subtitle"></p>
+                    <div class="col-md-offset-1 col-md-10">
+                        <div class="info text-center mb-50">
+                            <div class="col-md-6">
+                                <div class="item">
+                                    <span class="icon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+                                    <h6>Location</h6>
+                                    <p>New York, NY</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="item">
+                                    <span class="icon"><a href="https://www.linkedin.com/in/imrankhalique/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
+                                    <h6>LinkedIn</h6>
+                                    <p><a href="https://www.linkedin.com/in/imrankhalique/" target="_blank" rel="noopener">linkedin.com/in/imrankhalique</a></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <form class="form" id="contact-form" method="post" action="mailto:ikhalique15@gmail.com" enctype="text/plain">
+                            <div class="messages"></div>
+                            <div class="controls">
+                                <div class="row">
+</div>
+                                <div class="row">
+</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Contact ======-->
+        <!--====== Footer ======-->
+        <footer>
+            <div class="container text-center">
+                <div class="row">
+                    <p>&copy; 2026 Imran Khalique. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <!--====== End Footer ======-->
+        <!-- jQuery (bundled locally) -->
+        <script src="js/jquery.min.js"></script>
+        <!-- bootstrap -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- scrollIt -->
+        <script src="js/scrollIt.min.js"></script>
+        <!-- magnific-popup -->
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <!-- owl carousel -->
+        <script src="js/owl.carousel.min.js"></script>
+        <!-- stellar js -->
+        <script src="js/jquery.stellar.min.js"></script>
+        <!-- animated.headline -->
+        <script src="js/animated.headline.js"></script>
+        <!-- jquery.waypoints.min js -->
+        <script src="js/jquery.waypoints.min.js"></script>
+        <!-- jquery.counterup.min js -->
+        <script src="js/jquery.counterup.min.js"></script>
+        <!-- isotope.pkgd.min js -->
+        <script src="js/isotope.pkgd.min.js"></script>
+        <!-- validator js -->
+        <script src="js/validator.js"></script>
+        <!-- custom script -->
+        <script src="js/custom.js"></script>
+        <!-- Case-study lightbox: each card gets its own gallery so clicking a thumb opens that card's screenshots -->
+        <script>
+        	(function ($) {
+        		if (typeof $ === 'undefined' || !$.fn.magnificPopup) { return; }
+        		$('.case-evidence').each(function () {
+        			$(this).magnificPopup({
+        				delegate: '.ev-thumb',
+        				type: 'image',
+        				gallery: { enabled: true, navigateByImgClick: true },
+        				image: { titleSrc: 'title' },
+        				mainClass: 'mfp-fade'
+        			});
+        		});
+        	})(jQuery);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,244 @@
+<!doctype html>
+
+<html class="no-js" lang="en">
+
+    <head>
+
+    	<!-- metas -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       	<meta name="description" content="How we cut attack surface 60% by rebuilding a fragmented scanning footprint into a unified vulnerability management architecture.">
+
+		<!-- title -->
+		<title>How We Cut Attack Surface 60% — Imran Khalique</title>
+
+		<!-- favicon -->
+        <link href="../img/favicon.ico" rel="icon" type="image/png">
+
+        <!-- bootstrap css -->
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+
+		<!-- google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800" rel="stylesheet">
+
+		<!-- owl carousel CSS -->
+		<link rel="stylesheet" href="../css/owl.carousel.min.css">
+		<link rel="stylesheet" href="../css/owl.theme.default.min.css">
+
+		<!-- magnific-popup CSS -->
+		<link rel="stylesheet" href="../css/magnific-popup.css">
+
+		<!-- animate.min CSS -->
+		<link rel="stylesheet" href="../css/animate.min.css">
+
+		<!-- Font Icon Core CSS -->
+		<link rel="stylesheet" href="../css/font-awesome.min.css">
+		<link rel="stylesheet" href="../css/et-line.css">
+
+		<!-- Core Style Css -->
+        <link rel="stylesheet" href="../css/style.css">
+
+        <!--[if lt IE 9]-->
+		<script src="../js/html5shiv.min.js"></script>
+		<!--[endif]-->
+
+    </head>
+    
+    <body>
+
+    	<!-- ====== Preloader ======  -->
+	    <div class="loading">
+			<div class="load-circle">
+			</div>
+		</div>
+		<!-- ======End Preloader ======  -->
+
+		<!-- ====== Navgition ======  -->
+		<nav class="navbar navbar-default blog-nav">
+		  <div class="container">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-icon-collapse" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+
+		       <!-- logo -->
+		      <a class="logo" href="../index.html">Imran K.</a>
+
+		    </div>
+
+		    <div class="collapse navbar-collapse" id="nav-icon-collapse">
+			  <ul class="nav navbar-nav navbar-right">
+		        <li><a href="../index.html">Home</a></li>
+		        <li><a href="../index.html#" data-scroll-nav="1">About</a></li>
+		        <li><a href="../index.html#" data-scroll-nav="2">Services</a></li>
+		        <li><a href="../index.html#" data-scroll-nav="3">Experience</a></li>
+		        <li><a href="../index.html#" data-scroll-nav="4">Testimonials</a></li>
+		        <li><a href="../index.html#" data-scroll-nav="5" class="active">Blog</a></li>
+		        <li><a href="../index.html#" data-scroll-nav="6">Contact</a></li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+		<!-- ====== End Navgition ======  -->
+
+		<!-- ====== Header ======  -->
+		<section id="home" class="min-header" data-scroll-index="0">
+
+			<div class="v-middle mt-30">
+				<div class="container">
+					<div class="row">
+
+						<div class="text-center">
+							<h5>Vulnerability Management</h5>
+							<a href="../index.html">Home</a>
+							<a href="../index.html#" data-scroll-nav="5">Blog</a>
+							<a href="#0">Post Details</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ====== End Header ======  -->
+
+		<!--====== Blog ======-->
+		<section class="blogs section-padding">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-offset-2 col-md-8">
+						<div class="posts">
+
+							<div class="post mb-80">
+								<div class="post-img">
+									<img src="../img/blog/1.jpg" alt="">
+								</div>
+								<div class="content text-center">
+									<div class="post-meta">
+										<div class="post-title">
+											<h5>
+												<a href="#0">How We Cut Attack Surface 60% Without Buying a New Tool</a>
+											</h5>
+										</div>
+										<ul class="meta">
+											<li>
+												<a href="#0">
+													<i class="fa fa-user" aria-hidden="true"></i>
+													Imran Khalique
+												</a>
+											</li>
+											<li>
+												<a href="#0">
+													<i class="fa fa-folder-open" aria-hidden="true"></i>
+													Vulnerability Management
+												</a>
+											</li>
+											<li>
+												<a href="#0">
+													<i class="fa fa-calendar" aria-hidden="true"></i>
+													Apr 2026
+												</a>
+											</li>
+											<li>
+												<a href="#0">
+													<i class="fa fa-tags" aria-hidden="true"></i>
+													Rapid7, Tenable, CIS
+												</a>
+											</li>
+										</ul>
+									</div>
+
+									<div class="post-cont text-left">
+										<p>Most of the conversations I have about vulnerability management start with a tool. "We're thinking about switching to X." "Has anyone here used Y?" The honest answer in our case was that we already owned everything we needed — we just weren't using any of it as a system.</p>
+
+										<p class="spical">When I picked up vulnerability management at Audax, the scanning footprint was fragmented. Rapid7 was running. Tenable was running. CIS baselines existed somewhere as a reference document. What didn't exist was a clear answer to a simple question: which findings actually matter, and how do we know they got fixed?</p>
+
+										<p>That's the gap that turns vulnerability management from a program into a never-ending list of red badges in a dashboard. The fix wasn't more tooling — it was three changes to how we used what we already had.</p>
+
+										<p><strong>Single source of truth for asset coverage.</strong> Every endpoint, every server, every cloud workload had to map to one of our scanners. We stopped tolerating "this asset is in Tenable but not Rapid7" because that's exactly where blind spots live.</p>
+
+										<p><strong>CIS baselines as the remediation target, not the audit target.</strong> Instead of treating CIS as something we'd report against once a quarter, we wrote our Intune and GPO policies to enforce it. That alone moved us from chasing findings to preventing them.</p>
+
+										<p><strong>Automated remediation pushed via the existing config-management plumbing.</strong> PowerShell and Python scripts wrapped into Intune and GPO so a fix landed everywhere at once, not one machine at a time.</p>
+
+										<p>The result was a sustained 60% reduction in attack surface, measurable patch compliance, and a defensible story about why the posture looked the way it did when SOC 2 and pentest review came around. The win wasn't the tool. The win was deciding what "done" actually meant for each finding category.</p>
+
+										<p><em>Note: this is a draft post — replace with your own content when ready.</em></p>
+									</div>
+
+									<div class="share-post">
+										<span>Share Post</span>
+										<ul>
+											<li><i class="fa fa-linkedin" aria-hidden="true"></i></li>
+											<li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+											<li><i class="fa fa-envelope" aria-hidden="true"></i></li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!--====== End Blog ======-->
+
+
+		<!--====== Footer ======-->
+		<footer>
+			<div class="container text-center">
+				<div class="row">
+					<p>&copy; 2026 Imran Khalique. All Rights Reserved.</p>
+				</div>
+			</div>
+		</footer>
+		<!--====== End Footer ======-->
+
+
+       
+        <!-- jQuery (bundled locally) -->
+		<script src="../js/jquery.min.js"></script>
+
+	  	<!-- bootstrap -->
+		<script src="../js/bootstrap.min.js"></script>
+
+		<!-- scrollIt -->
+		<script src="../js/scrollIt.min.js"></script>
+
+		<!-- magnific-popup -->
+		<script src="../js/jquery.magnific-popup.min.js"></script>
+
+		<!-- owl carousel -->
+		<script src="../js/owl.carousel.min.js"></script>
+
+		<!-- stellar js -->
+		<script src="../js/jquery.stellar.min.js"></script>
+
+		<!-- animated.headline -->
+		<script src="../js/animated.headline.js"></script>
+
+      	<!-- jquery.waypoints.min js -->
+	  	<script src="../js/jquery.waypoints.min.js"></script>
+
+	  	<!-- jquery.counterup.min js -->
+	  	<script src="../js/jquery.counterup.min.js"></script>
+
+      	<!-- isotope.pkgd.min js -->
+      	<script src="../js/isotope.pkgd.min.js"></script>
+
+      	<!-- validator js -->
+      	<script src="../js/validator.js"></script>
+
+      	<!-- custom script -->
+        <script src="../js/custom.js"></script>
+
+    </body>
+</html>
