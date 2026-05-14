@@ -43,7 +43,7 @@
         <!-- Core Style Css -->
         <link rel="stylesheet" href="css/style.css">
         <!-- Light additions for new sections (case studies, skills groups, education, hero stats) -->
-        <style>.hero-stats-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 0; margin: 40px auto 0; max-width: 880px; border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(255,255,255,0.2); } .hero-stats-strip .stat { flex: 1; min-width: 160px; padding: 18px 14px; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); } .hero-stats-strip .stat:last-child { border-right: 0; } .hero-stats-strip .stat .num { color: #fff; font-size: 28px; font-weight: 700; display: block; line-height: 1.1; } .hero-stats-strip .stat .lbl { color: rgba(255,255,255,0.85); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px; display: block; } .exp-section { padding-bottom: 70px; } .exp-card { background: #fff; padding: 35px 40px; margin-bottom: 30px; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.1); border-left: 3px solid #ed3a3a; } .exp-card .role { font-weight: 700; font-size: 22px; color: #222; margin: 0; font-family: 'Montserrat', sans-serif; } .exp-card .org { color: #ed3a3a; font-size: 14px; font-weight: 500; margin: 4px 0 0; font-style: italic; } .exp-card .dates { color: #999; font-size: 12px; letter-spacing: 1.5px; font-weight: 600; } .exp-card .summary { margin: 18px 0; color: #748182; font-size: 14px; line-height: 1.7; } .exp-card .impact-title { color: #222; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin: 22px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #eee; } .exp-card ul { color: #748182; font-size: 14px; line-height: 1.85; padding-left: 20px; margin: 0; } .exp-card ul li { margin-bottom: 6px; } .exp-card ul li strong { color: #222; } .case-card { background: #fff; padding: 30px 28px; margin-bottom: 30px; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.1); transition: all 0.3s; height: calc(100% - 30px); display: flex; flex-direction: column; } .case-card:hover { transform: translateY(-5px); box-shadow: 0 14px 34px -8px rgba(0,0,0,0.16); } .case-card .case-tag { display: inline-block; color: #ed3a3a; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; } .case-card h4 { font-weight: 700; font-size: 18px; color: #222; margin: 0 0 8px; line-height: 1.35; font-family: 'Montserrat', sans-serif; } .case-card .metric { color: #748182; font-style: italic; font-size: 13px; margin-bottom: 16px; } .case-card .row-meta { font-size: 13px; color: #555; margin: 8px 0; line-height: 1.6; } .case-card .row-meta strong { color: #222; font-weight: 600; } .case-card .desc { color: #748182; font-size: 13px; line-height: 1.7; margin: 12px 0; flex-grow: 1; } .case-card .outcome { font-size: 13px; line-height: 1.6; color: #748182; padding-top: 14px; margin-top: 14px; border-top: 1px solid #eee; } .case-card .outcome strong { color: #ed3a3a; } /* Evidence thumbnail row — clickable mini previews that open in a lightbox */.case-evidence { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #eee; } .case-evidence .ev-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; color: #999; width: 100%; margin-bottom: 4px; } .case-evidence .ev-thumb { width: 60px; height: 44px; overflow: hidden; cursor: pointer; border: 1px solid #e5e5e5; transition: all 0.2s; position: relative; display: block; } .case-evidence .ev-thumb:hover { border-color: #ed3a3a; transform: scale(1.05); } .case-evidence .ev-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; } .case-evidence .ev-thumb .ev-overlay { position: absolute; inset: 0; background: rgba(237,58,58,0); display: flex; align-items: center; justify-content: center; transition: background 0.2s; } .case-evidence .ev-thumb:hover .ev-overlay { background: rgba(237,58,58,0.7); } .case-evidence .ev-thumb .ev-overlay i { color: #fff; font-size: 14px; opacity: 0; transition: opacity 0.2s; } .case-evidence .ev-thumb:hover .ev-overlay i { opacity: 1; } /* Make case study columns equal-height via flexbox */.case-row { display: flex; flex-wrap: wrap; } .case-row > [class*="col-"] { display: flex; flex-direction: column; } .skill-group { margin-bottom: 35px; } .skill-group .group-title { color: #222; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #ed3a3a; display: inline-block; font-family: 'Montserrat', sans-serif; } .skill-group .pill-row { display: flex; flex-wrap: wrap; gap: 10px; } .skill-group .pill { background: #fff; padding: 10px 16px; font-size: 13px; font-weight: 500; color: #444; border: 1px solid #e8e8e8; transition: all 0.25s; font-family: 'Poppins', sans-serif; } .skill-group .pill:hover { background: #ed3a3a; color: #fff; border-color: #ed3a3a; } .edu-card { background: #fff; padding: 35px 28px; text-align: center; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.1); margin-bottom: 30px; min-height: 230px; transition: all 0.3s; } .edu-card:hover { transform: translateY(-5px); box-shadow: 0 14px 34px -8px rgba(0,0,0,0.16); } .edu-card .icon { font-size: 42px; color: #ed3a3a; margin-bottom: 14px; display: block; } .edu-card h5 { font-weight: 700; font-size: 17px; color: #222; margin: 8px 0 6px; font-family: 'Montserrat', sans-serif; } .edu-card .meta { color: #748182; font-size: 13px; margin: 4px 0; line-height: 1.5; } .edu-card .meta strong { color: #222; font-weight: 600; } .edu-card .meta a { color: #ed3a3a; } .edu-card .badge-progress { display: inline-block; background: #ed3a3a; color: #fff; padding: 4px 12px; font-size: 10px; letter-spacing: 1.5px; font-weight: 600; margin-top: 8px; } .section-subtitle { color: #999; font-style: italic; font-size: 14px; text-align: center; margin-top: -50px; margin-bottom: 50px; } @media (max-width: 768px) { .exp-card {  padding: 26px 22px; }  .exp-card .dates {  display: block;  margin-top: 8px; }  .case-card {  height: auto; } } .static-name { color: #fff; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 72px; letter-spacing: 1px; line-height: 1.05; margin: 0 0 18px; text-shadow: 0 2px 30px rgba(0,0,0,0.4); } @media (max-width: 768px) { .static-name {  font-size: 52px;  letter-spacing: 0.5px; } } .name-tagline { color: rgba(255,255,255,0.92); font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 22px; letter-spacing: 4px; text-transform: uppercase; margin: 0; line-height: 1.2; } .name-tagline .cd-words-wrapper b { font-weight: 300; } @media (max-width: 768px) { .name-tagline {  font-size: 14px;  letter-spacing: 2px; } } /* Hero background video — sits behind the template's existing dark .header:after overlay (which is at opacity 0.65) so text stays readable */.header .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; } .header:after { z-index: 2; } .header .v-middle { z-index: 11; position: relative; } /* Scroll-down indicator at bottom of hero */.scroll-down { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); z-index: 12; color: rgba(255,255,255,0.85); text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: color 0.2s, opacity 0.2s; } .scroll-down:hover, .scroll-down:focus { color: #fff; text-decoration: none; opacity: 0.9; } .scroll-down .scroll-text { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; } .scroll-down .scroll-arrow { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.5); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; animation: scrollBounce 2s ease-in-out infinite; } @keyframes scrollBounce { 0%, 20%, 50%, 80%, 100% {  transform: translateY(0); }  40% {  transform: translateY(-8px); }  60% {  transform: translateY(-4px); } } @media (max-width: 768px) { .scroll-down {  bottom: 20px; }  .scroll-down .scroll-text {  font-size: 10px; } } /* Centered nav */.navbar-default .navbar-collapse { text-align: center; } .nav-centered { float: none !important; display: inline-block; vertical-align: top; }</style>
+        <style>.hero-stats-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 0; margin: 40px auto 0; max-width: 880px; border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(255,255,255,0.2); } .hero-stats-strip .stat { flex: 1; min-width: 160px; padding: 18px 14px; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); } .hero-stats-strip .stat:last-child { border-right: 0; } .hero-stats-strip .stat .num { color: #fff; font-size: 28px; font-weight: 700; display: block; line-height: 1.1; } .hero-stats-strip .stat .lbl { color: rgba(255,255,255,0.85); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px; display: block; } .exp-section { padding-bottom: 70px; } .exp-card { background: #fff; padding: 35px 40px; margin-bottom: 30px; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.1); border-left: 3px solid #ed3a3a; } .exp-card .role { font-weight: 700; font-size: 22px; color: #222; margin: 0; font-family: 'Montserrat', sans-serif; } .exp-card .org { color: #ed3a3a; font-size: 14px; font-weight: 500; margin: 4px 0 0; font-style: italic; } .exp-card .dates { color: #999; font-size: 12px; letter-spacing: 1.5px; font-weight: 600; } .exp-card .summary { margin: 18px 0; color: #748182; font-size: 14px; line-height: 1.7; } .exp-card .impact-title { color: #222; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin: 22px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #eee; } .exp-card ul { color: #748182; font-size: 14px; line-height: 1.85; padding-left: 20px; margin: 0; } .exp-card ul li { margin-bottom: 6px; } .exp-card ul li strong { color: #222; } .case-card { background: #fff; padding: 30px 28px; margin-bottom: 30px; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.1); transition: all 0.3s; height: calc(100% - 30px); display: flex; flex-direction: column; } .case-card:hover { transform: translateY(-5px); box-shadow: 0 14px 34px -8px rgba(0,0,0,0.16); } .case-card .case-tag { display: inline-block; color: #ed3a3a; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; } .case-card h4 { font-weight: 700; font-size: 18px; color: #222; margin: 0 0 8px; line-height: 1.35; font-family: 'Montserrat', sans-serif; } .case-card .metric { color: #748182; font-style: italic; font-size: 13px; margin-bottom: 16px; } .case-card .row-meta { font-size: 13px; color: #555; margin: 8px 0; line-height: 1.6; } .case-card .row-meta strong { color: #222; font-weight: 600; } .case-card .desc { color: #748182; font-size: 13px; line-height: 1.7; margin: 12px 0; flex-grow: 1; } .case-card .outcome { font-size: 13px; line-height: 1.6; color: #748182; padding-top: 14px; margin-top: 14px; border-top: 1px solid #eee; } .case-card .outcome strong { color: #ed3a3a; } /* Evidence thumbnail row — clickable mini previews that open in a lightbox */.case-evidence { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #eee; } .case-evidence .ev-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; color: #999; width: 100%; margin-bottom: 4px; } .case-evidence .ev-thumb { width: 60px; height: 44px; overflow: hidden; cursor: pointer; border: 1px solid #e5e5e5; transition: all 0.2s; position: relative; display: block; } .case-evidence .ev-thumb:hover { border-color: #ed3a3a; transform: scale(1.05); } .case-evidence .ev-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; } .case-evidence .ev-thumb .ev-overlay { position: absolute; inset: 0; background: rgba(237,58,58,0); display: flex; align-items: center; justify-content: center; transition: background 0.2s; } .case-evidence .ev-thumb:hover .ev-overlay { background: rgba(237,58,58,0.7); } .case-evidence .ev-thumb .ev-overlay i { color: #fff; font-size: 14px; opacity: 0; transition: opacity 0.2s; } .case-evidence .ev-thumb:hover .ev-overlay i { opacity: 1; } /* Make case study columns equal-height via flexbox */.case-row { display: flex; flex-wrap: wrap; } .case-row > [class*="col-"] { display: flex; flex-direction: column; } .skill-group { margin-bottom: 35px; } .skill-group .group-title { color: #222; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #ed3a3a; display: inline-block; font-family: 'Montserrat', sans-serif; } .skill-group .pill-row { display: flex; flex-wrap: wrap; gap: 10px; } .skill-group .pill { background: #fff; padding: 10px 16px; font-size: 13px; font-weight: 500; color: #444; border: 1px solid #e8e8e8; transition: all 0.25s; font-family: 'Poppins', sans-serif; } .skill-group .pill:hover { background: #ed3a3a; color: #fff; border-color: #ed3a3a; } .edu-card { background: #fff; padding: 35px 28px; text-align: center; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.1); margin-bottom: 30px; min-height: 230px; transition: all 0.3s; } .edu-card:hover { transform: translateY(-5px); box-shadow: 0 14px 34px -8px rgba(0,0,0,0.16); } .edu-card .icon { font-size: 42px; color: #ed3a3a; margin-bottom: 14px; display: block; } .edu-card h5 { font-weight: 700; font-size: 17px; color: #222; margin: 8px 0 6px; font-family: 'Montserrat', sans-serif; } .edu-card .meta { color: #748182; font-size: 13px; margin: 4px 0; line-height: 1.5; } .edu-card .meta strong { color: #222; font-weight: 600; } .edu-card .meta a { color: #ed3a3a; } .edu-card .badge-progress { display: inline-block; background: #ed3a3a; color: #fff; padding: 4px 12px; font-size: 10px; letter-spacing: 1.5px; font-weight: 600; margin-top: 8px; } .section-subtitle { color: #999; font-style: italic; font-size: 14px; text-align: center; margin-top: -50px; margin-bottom: 50px; } @media (max-width: 768px) { .hero .row { display: flex; flex-direction: column; } } @media (max-width: 768px) { .exp-card {  padding: 26px 22px; }  .exp-card .dates {  display: block;  margin-top: 8px; }  .case-card {  height: auto; } .about-text-col { order: 1; } .about-img-col { order: 2; } .about-img-col .hero-img img { max-width: 220px; margin: 0 auto; display: block; } .about-btn-wrap { text-align: center; } } .static-name { color: #fff; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 72px; letter-spacing: 1px; line-height: 1.05; margin: 0 0 18px; text-shadow: 0 2px 30px rgba(0,0,0,0.4); } @media (max-width: 768px) { .static-name {  font-size: 52px;  letter-spacing: 0.5px; } } .name-tagline { color: rgba(255,255,255,0.92); font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 22px; letter-spacing: 4px; text-transform: uppercase; margin: 0; line-height: 1.2; } .name-tagline .cd-words-wrapper b { font-weight: 300; } @media (max-width: 768px) { .name-tagline {  font-size: 14px;  letter-spacing: 2px; } } /* Hero background video — sits behind the template's existing dark .header:after overlay (which is at opacity 0.65) so text stays readable */.header .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; } .header:after { z-index: 2; } .header .v-middle { z-index: 11; position: relative; } /* Scroll-down indicator at bottom of hero */.scroll-down { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); z-index: 12; color: rgba(255,255,255,0.85); text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: color 0.2s, opacity 0.2s; } .scroll-down:hover, .scroll-down:focus { color: #fff; text-decoration: none; opacity: 0.9; } .scroll-down .scroll-text { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; } .scroll-down .scroll-arrow { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.5); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; animation: scrollBounce 2s ease-in-out infinite; } @keyframes scrollBounce { 0%, 20%, 50%, 80%, 100% {  transform: translateY(0); }  40% {  transform: translateY(-8px); }  60% {  transform: translateY(-4px); } } @media (max-width: 768px) { .scroll-down {  bottom: 20px; }  .scroll-down .scroll-text {  font-size: 10px; } } /* Centered nav */.navbar-default .navbar-collapse { text-align: center; } .nav-centered { float: none !important; display: inline-block; vertical-align: top; }</style>
         <!--[if lt IE 9]-->
         <script src="js/html5shiv.min.js"></script>
         <!--[endif]-->
@@ -78,7 +78,7 @@
                             <a href="#" data-scroll-nav="3">Experience</a>
                         </li>
                         <li>
-                            <a href="#" data-scroll-nav="4">Case Studies/Projects</a>
+                            <a href="#" data-scroll-nav="4">Case Studies</a>
                         </li>
                         <li>
                             <a href="#" data-scroll-nav="5">Skills</a>
@@ -122,21 +122,24 @@
         <section class="hero section-padding pb-70" data-scroll-index="1">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-5 col-md-5">
-                        <div class="hero-img mb-30">
-                            <img src="img/hero.jpg" alt="">
+                    <!-- On mobile: text first (order via flex), image second. On desktop: image left, text right -->
+                    <div class="col-md-5 about-img-col text-center">
+                        <div class="hero-img mb-30" style="padding:0; display:flex; flex-direction:column; align-items:center;">
+                            <img src="img/hero.jpg" alt="Imran Khalique" style="max-width:320px; width:100%;">
                         </div>
                     </div>
-                    <div class="col-xs-7 col-md-7">
+                    <div class="col-md-7 about-text-col">
                         <div class="content mb-30">
-                            <h3>About</h3>
+                            <div class="section-head text-center" style="margin-bottom: 20px;">
+                                <h3>About</h3>
+                            </div>
                             <p>From a young age, I was the kid who took apart toy RC cars to figure out how they worked. That curiosity grew into a knack for problem-solving — and the RC cars eventually gave way to computers. By 19, I'd gone from building PCs from scratch to cracking WEP, an outdated WiFi protocol now replaced by WPA.</p>
                             <p><br></p>
                             <p>Fastforward to present day: I started my career as an IT desktop engineer at <b>Ernst &amp; Young</b>, supporting one of the largest professional-services environments in the world, then grew into IT operations and full-time security at <b>Audax Group</b>, a boutique private equity firm. Along the way I owned identity, endpoint, vulnerability management, awareness training, and digital risk protection — first as the sole IT engineer in the NYC office, then as the firm's go-to person for information security hardening, detection, architecture, response and much more. </p>
                             <p><br></p>
-                            <p></p>
-                            <a href="https://www.linkedin.com/in/imrankhalique" target="_blank" rel="noopener"> <span class="buton buton-bg">View LinkedIn</span> </a>
-                            <a href="files/ImranKhaliqueResume.pdf" target="_blank" rel="noopener"> </a>
+                            <div class="about-btn-wrap">
+                                <a href="https://www.linkedin.com/in/imrankhalique" target="_blank" rel="noopener"><span class="buton buton-bg">View LinkedIn</span></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -226,7 +229,7 @@
         <section class="case-section section-padding pb-70" data-scroll-index="4">
             <div class="container">
                 <div class="section-head">
-                    <h3>Case Studies/Projects</h3>
+                    <h3>Case Studies</h3>
                 </div>
                 <p class="section-subtitle">Selected security programs I built and ran</p>
                 <div class="row case-row">
@@ -353,37 +356,44 @@
                 <p class="section-subtitle"></p>
                 <div class="row">
                     <div class="col-md-offset-1 col-md-10">
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="skill-group">
-                                    <div class="group-title">Identity &amp; Access</div>
+                                    <div class="group-title">Identity &amp; Access Management</div>
                                     <div class="pill-row">
                                         <span class="pill">Microsoft Entra ID</span>
                                         <span class="pill">Active Directory</span>
                                         <span class="pill">Conditional Access</span>
                                         <span class="pill">SSO / SAML</span>
-                                        <span class="pill">Intune</span>
+                                        <span class="pill">Intune MDM</span>
+                                        <span class="pill">Privileged Access Management</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="skill-group">
-                                    <div class="group-title">Endpoint &amp; EDR</div>
+                                    <div class="group-title">Endpoint Security &amp; Hardening</div>
                                     <div class="pill-row">
                                         <span class="pill">CrowdStrike</span>
                                         <span class="pill">Microsoft Defender</span>
-                                        <span class="pill">CIS Benchmarks</span>
                                         <span class="pill">GPO Hardening</span>
-                                        <span class="pill">Intune</span>
+                                        <span class="pill">Full-Disk Encryption</span>
+                                        <span class="pill">Sophos AV</span>
+                                        <span class="pill">CIS Benchmarks</span>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="skill-group">
-                                    <div class="group-title">Vulnerability &amp; Threat Mgmt</div>
+                                    <div class="group-title">Vulnerability Management</div>
                                     <div class="pill-row">
                                         <span class="pill">Rapid7 InsightVM</span>
-                                        <span class="pill">Tenable</span>
+                                        <span class="pill">Tenable Nessus</span>
+                                        <span class="pill">CIS Benchmarks</span>
                                         <span class="pill">CVE / IOC Analysis</span>
                                         <span class="pill">Pentest Oversight</span>
                                     </div>
@@ -391,52 +401,61 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="skill-group">
-                                    <div class="group-title">Detection &amp; Response</div>
+                                    <div class="group-title">Detection, Response &amp; SIEM</div>
                                     <div class="pill-row">
                                         <span class="pill">Exabeam SIEM</span>
                                         <span class="pill">Reliaquest MDR</span>
                                         <span class="pill">Darktrace</span>
                                         <span class="pill">SOAR Automation</span>
+                                        <span class="pill">SIEM Tuning</span>
                                         <span class="pill">Incident Response</span>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="skill-group">
-                                    <div class="group-title">Cloud, SaaS &amp; Email</div>
+                                    <div class="group-title">Cloud &amp; SaaS Security</div>
                                     <div class="pill-row">
-                                        <span class="pill">Microsoft 365</span>
                                         <span class="pill">Adaptive Shield (SSPM)</span>
-                                        <span class="pill">Mimecast</span>
+                                        <span class="pill">Microsoft 365</span>
                                         <span class="pill">Zscaler</span>
+                                        <span class="pill">Mimecast</span>
+                                        <span class="pill">SaaS Configuration Management</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="skill-group">
-                                    <div class="group-title">Risk, Governance &amp; Awareness</div>
+                                    <div class="group-title">GRC &amp; Risk Management</div>
                                     <div class="pill-row">
                                         <span class="pill">NIST CSF</span>
-                                        <span class="pill">SOC 2 Analysis</span>
-                                        <span class="pill">Third-Party Risk</span>
+                                        <span class="pill">SOC 2</span>
+                                        <span class="pill">Third-Party Risk (TPRM)</span>
                                         <span class="pill">KnowBe4</span>
                                         <span class="pill">DeleteMe</span>
                                         <span class="pill">Digital Shadows / RQ DRP</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="skill-group">
-                                    <div class="group-title">Automation &amp; Scripting</div>
-                                    <div class="pill-row">
-                                        <span class="pill">PowerShell</span>
-                                        <span class="pill">Python</span>
                                         <span class="pill">KPI Reporting</span>
-                                        <span class="pill">SIEM Tuning</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="skill-group">
+                                    <div class="group-title">Scripting &amp; Automation</div>
+                                    <div class="pill-row">
+                                        <span class="pill">PowerShell</span>
+                                        <span class="pill">Python</span>
+                                        <span class="pill">Microsoft Graph API</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -643,7 +662,6 @@
                     <div class="section-head">
                         <h3>Contact</h3>
                     </div>
-                    <p class="section-subtitle"></p>
                     <div class="col-md-offset-1 col-md-10">
                         <div class="info text-center mb-50">
                             <div class="col-md-6">
