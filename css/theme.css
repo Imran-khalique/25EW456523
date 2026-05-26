@@ -1,0 +1,940 @@
+/* =========================================================
+   THEME SYSTEM (Light + Dark) and HOMELAB SECTION STYLES
+   ========================================================= */
+
+/* --- Theme switch in the nav (left side) --- */
+/* Switch the navbar-collapse layout to flexbox on desktop so the switch sits
+   genuinely on the left and the centered menu takes the remaining space with
+   no possibility of overlap. */
+@media (min-width: 768px) {
+    .navbar-default .navbar-collapse {
+        display: flex !important;
+        align-items: flex-start;
+    }
+    .navbar-default .navbar-collapse > .theme-switch-wrap {
+        flex: 0 0 auto;
+        margin-top: 22px; /* matches the menu items' ~25px top margin so switch lines up with link text */
+    }
+    .navbar-default .navbar-collapse > .nav-centered {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+}
+/* Tighten nav item spacing so all items + the switch fit on one line.
+   The template's default is margin: 25px 20px 0 — pulling that in to 8px on
+   sides gives us ~190px back across 9 items, which keeps Contact on the same
+   line at typical laptop widths. */
+@media (min-width: 768px) {
+    .navbar-default .navbar-nav > li {
+        margin: 25px 8px 0 !important;
+    }
+}
+/* On wider desktops give the spacing a bit more room back */
+@media (min-width: 1500px) {
+    .navbar-default .navbar-nav > li {
+        margin: 25px 15px 0 !important;
+    }
+}
+
+/* Smooth the navbar's transition from transparent (top of page) to the
+   .nav-scroll state (white background, shrunk height). Without this the
+   template snaps abruptly which reads as a flash. */
+.navbar-default {
+    transition: background 0.3s ease, box-shadow 0.3s ease, min-height 0.3s ease, padding 0.3s ease;
+}
+.navbar-default .navbar-nav > li {
+    transition: margin 0.3s ease;
+}
+.navbar-default .navbar-nav > li > a {
+    transition: color 0.25s ease;
+}
+
+/* When the navbar shrinks (.nav-scroll), the switch's existing top margin
+   would push it too far down inside the smaller band. Reduce it to keep
+   the switch aligned with the menu items in the shrunk navbar. */
+@media (min-width: 768px) {
+    .nav-scroll .theme-switch-wrap {
+        margin-top: 18px !important;
+    }
+}
+.theme-switch-wrap {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+.theme-switch {
+    display: inline-block;
+    cursor: pointer;
+    margin: 0;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1;
+}
+.theme-switch-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+}
+.theme-switch-track {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 58px;
+    height: 28px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 0 7px;
+    transition: background 0.3s, border-color 0.3s;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+/* When the page has scrolled and navbar is on a light background, adjust track */
+.nav-scroll .theme-switch-track {
+    background: #e8e8e8;
+    border-color: rgba(0,0,0,0.1);
+}
+.theme-switch-sun,
+.theme-switch-moon {
+    font-size: 12px;
+    line-height: 1;
+    z-index: 1;
+    transition: color 0.3s, opacity 0.3s;
+}
+.theme-switch-sun {
+    color: #f5a623;
+}
+.theme-switch-moon {
+    color: rgba(255,255,255,0.7);
+    opacity: 0.7;
+}
+.nav-scroll .theme-switch-moon {
+    color: #6b7280;
+    opacity: 0.55;
+}
+.theme-switch-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
+    z-index: 2;
+}
+.theme-switch:hover .theme-switch-track {
+    border-color: rgba(192,57,43,0.5);
+}
+.theme-switch-input:focus-visible + .theme-switch-track {
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.35);
+}
+
+/* Checked = dark mode */
+.theme-switch-input:checked + .theme-switch-track {
+    background: #2a2f3c;
+    border-color: rgba(255,255,255,0.15);
+}
+.theme-switch-input:checked + .theme-switch-track .theme-switch-thumb {
+    transform: translateX(30px);
+    background: #f5f5f5;
+}
+.theme-switch-input:checked + .theme-switch-track .theme-switch-sun {
+    color: #f5a623;
+    opacity: 0.4;
+}
+.theme-switch-input:checked + .theme-switch-track .theme-switch-moon {
+    color: #e8ecf3;
+    opacity: 1;
+}
+
+/* Chapter pages (and nav-scroll on home) use a light navbar background, so
+   make sure the switch track contrasts properly there too */
+html[data-theme="dark"] .theme-switch-track {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.18);
+}
+html[data-theme="dark"] .nav-scroll .theme-switch-track {
+    background: #2a2f3c;
+    border-color: rgba(255,255,255,0.15);
+}
+
+/* Mobile: switch sits inline at the top of the collapsed menu */
+@media (max-width: 767px) {
+    .theme-switch-wrap {
+        position: static;
+        justify-content: center;
+        margin: 14px 0 6px;
+    }
+}
+
+/* =========================================================
+   DARK MODE OVERRIDES
+   The original site is light by default. These selectors
+   only activate when html has data-theme="dark".
+   ========================================================= */
+
+html[data-theme="dark"] body {
+    background: #0f1115;
+    color: #d0d4dc;
+}
+
+/* Nav — keep the navbar transparent in dark mode like the original light theme.
+   Only the scrolled state (.nav-scroll, added by the template on scroll) gets
+   a solid background. */
+html[data-theme="dark"] .nav-scroll {
+    background: rgba(15, 17, 21, 0.95) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+html[data-theme="dark"] .navbar-default .navbar-nav > li > a {
+    color: #fff !important;
+}
+html[data-theme="dark"] .nav-scroll .navbar-nav > li > a {
+    color: #d0d4dc !important;
+}
+/* The template sets the .active underline to #222 (dark) when the navbar is in
+   .nav-scroll state, which becomes invisible against our dark-mode navbar.
+   Restore a light underline in dark mode for both states. */
+html[data-theme="dark"] .navbar-default .navbar-nav > li > a:after {
+    background: #fff !important;
+}
+html[data-theme="dark"] .nav-scroll .navbar-nav > li > a:after {
+    background: #d0d4dc !important;
+}
+html[data-theme="dark"] .navbar-default .navbar-nav > li > a:hover {
+    color: #c0392b !important;
+}
+/* Hamburger icon-bars: keep light against the dark hero, dark against
+   the white scrolled state (light mode); in dark mode keep light always
+   so they show against the dark scrolled navbar too. */
+html[data-theme="dark"] .navbar-default .navbar-toggle .icon-bar,
+html[data-theme="dark"] .nav-scroll .navbar-toggle .icon-bar {
+    background: #f5f5f5 !important;
+}
+
+/* Mobile collapsed menu — template sets a white background which is jarring
+   in dark mode. Use a dark panel that matches the navbar. */
+@media (max-width: 767px) {
+    html[data-theme="dark"] .navbar-default .navbar-collapse {
+        background: #1a1d27 !important;
+        border-top: 1px solid rgba(255,255,255,0.06) !important;
+    }
+    html[data-theme="dark"] .navbar-default .navbar-nav > li > a {
+        color: #d0d4dc !important;
+    }
+}
+
+/* Generic section backgrounds */
+html[data-theme="dark"] .bg-gray {
+    background: #161922 !important;
+}
+html[data-theme="dark"] section {
+    background-color: transparent;
+}
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .exp-section,
+html[data-theme="dark"] .case-section,
+html[data-theme="dark"] .homelab-section,
+html[data-theme="dark"] .contact,
+html[data-theme="dark"] .blog {
+    background-color: #0f1115;
+}
+html[data-theme="dark"] .bg-gray {
+    background-color: #161922 !important;
+}
+
+/* Headings + section heads */
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6 {
+    color: #f5f5f5;
+}
+html[data-theme="dark"] .section-head h3 {
+    color: #f5f5f5;
+}
+html[data-theme="dark"] .section-subtitle {
+    color: #8a91a0;
+}
+html[data-theme="dark"] p {
+    color: #b8bdc7;
+}
+
+/* Cards (experience, case, edu) */
+html[data-theme="dark"] .exp-card,
+html[data-theme="dark"] .case-card,
+html[data-theme="dark"] .edu-card {
+    background: #1a1d27;
+    box-shadow: 0 10px 30px -8px rgba(0,0,0,0.55);
+    border-left-color: #c0392b;
+}
+html[data-theme="dark"] .exp-card .role,
+html[data-theme="dark"] .exp-card .impact-title,
+html[data-theme="dark"] .case-card h4,
+html[data-theme="dark"] .edu-card h5 {
+    color: #f5f5f5;
+}
+html[data-theme="dark"] .exp-card .summary,
+html[data-theme="dark"] .exp-card ul,
+html[data-theme="dark"] .case-card .desc,
+html[data-theme="dark"] .case-card .outcome,
+html[data-theme="dark"] .edu-card .meta {
+    color: #b0b6c1;
+}
+html[data-theme="dark"] .exp-card ul li strong,
+html[data-theme="dark"] .case-card .row-meta strong,
+html[data-theme="dark"] .edu-card .meta strong {
+    color: #f5f5f5;
+}
+html[data-theme="dark"] .exp-card .dates {
+    color: #8a91a0;
+}
+html[data-theme="dark"] .exp-card .impact-title {
+    border-bottom-color: #2a2f3c;
+}
+html[data-theme="dark"] .case-card .outcome,
+html[data-theme="dark"] .case-evidence {
+    border-top-color: #2a2f3c;
+}
+html[data-theme="dark"] .case-card .row-meta {
+    color: #b0b6c1;
+}
+html[data-theme="dark"] .case-evidence .ev-label {
+    color: #8a91a0;
+}
+html[data-theme="dark"] .case-evidence .ev-thumb {
+    border-color: #2a2f3c;
+}
+
+/* Skill pills */
+html[data-theme="dark"] .skill-group .group-title {
+    color: #f5f5f5;
+}
+html[data-theme="dark"] .skill-group .pill {
+    background: #1a1d27;
+    color: #d0d4dc;
+    border-color: #2a2f3c;
+}
+html[data-theme="dark"] .skill-group .pill:hover {
+    background: #c0392b;
+    color: #fff;
+    border-color: #c0392b;
+}
+
+/* Contact */
+html[data-theme="dark"] .contact .info .item h6 {
+    color: #f5f5f5;
+}
+html[data-theme="dark"] .contact .info .item p,
+html[data-theme="dark"] .contact .info .item a {
+    color: #b0b6c1;
+}
+
+/* Footer */
+html[data-theme="dark"] footer {
+    background: #0a0c10;
+}
+html[data-theme="dark"] footer p {
+    color: #8a91a0;
+}
+
+/* Preloader */
+html[data-theme="dark"] .loading {
+    background: #0f1115;
+}
+
+/* =========================================================
+   HOMELAB SECTION (homepage cards)
+   ========================================================= */
+.homelab-section {
+    padding-bottom: 70px;
+}
+.homelab-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.homelab-card {
+    flex: 1 1 320px;
+    max-width: 360px;
+    background: #fff;
+    box-shadow: 0 10px 30px -8px rgba(0,0,0,0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 3px solid #c0392b;
+}
+.homelab-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px -10px rgba(0,0,0,0.22);
+    text-decoration: none;
+    color: inherit;
+}
+.homelab-card .ch-banner {
+    height: 140px;
+    background: linear-gradient(135deg, #1c1c1c 0%, #2a2f3c 50%, #c0392b 130%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+}
+.homelab-card .ch-banner .ch-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+.homelab-card .ch-banner .ch-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+}
+.homelab-card .ch-body {
+    padding: 24px 26px 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.homelab-card .ch-body h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 10px;
+    line-height: 1.35;
+}
+.homelab-card .ch-body p {
+    color: #748182;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 0 0 18px;
+    flex-grow: 1;
+}
+.homelab-card .ch-cta {
+    color: #c0392b;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.homelab-card .ch-cta i {
+    transition: transform 0.25s;
+}
+.homelab-card:hover .ch-cta i {
+    transform: translateX(4px);
+}
+
+/* Dark mode for homelab cards */
+html[data-theme="dark"] .homelab-card {
+    background: #1a1d27;
+    box-shadow: 0 10px 30px -8px rgba(0,0,0,0.55);
+}
+html[data-theme="dark"] .homelab-card:hover {
+    box-shadow: 0 18px 40px -10px rgba(0,0,0,0.7);
+}
+html[data-theme="dark"] .homelab-card .ch-body h4 {
+    color: #f5f5f5;
+}
+html[data-theme="dark"] .homelab-card .ch-body p {
+    color: #b0b6c1;
+}
+
+/* =========================================================
+   HOMELAB CHAPTER DETAIL PAGE
+   ========================================================= */
+.chapter-hero {
+    padding: 140px 0 70px;
+    background: linear-gradient(135deg, #1c1c1c 0%, #2a2f3c 60%, #c0392b 140%);
+    color: #fff;
+    text-align: center;
+}
+.chapter-hero .ch-label {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.3);
+    margin-bottom: 18px;
+}
+.chapter-hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 52px;
+    font-weight: 700;
+    margin: 0 0 14px;
+    color: #fff;
+    line-height: 1.15;
+}
+.chapter-hero .ch-sub {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Chapter navigation buttons inside the hero */
+.chapter-nav {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+.chapter-nav .chnav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s, color 0.2s;
+    line-height: 1;
+}
+.chapter-nav .chnav-btn:hover {
+    background: #c0392b;
+    border-color: #c0392b;
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+.chapter-nav .chnav-btn.chnav-primary {
+    background: rgba(255,255,255,0.95);
+    color: #1c1c1c;
+    border-color: transparent;
+}
+.chapter-nav .chnav-btn.chnav-primary:hover {
+    background: #c0392b;
+    color: #fff;
+}
+.chapter-nav .chnav-btn.chnav-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+.chapter-nav .chnav-btn i {
+    font-size: 11px;
+}
+
+@media (max-width: 768px) {
+    .chapter-hero h1 { font-size: 36px; }
+    .chapter-hero { padding: 110px 0 50px; }
+    .chapter-nav .chnav-btn {
+        padding: 10px 16px;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+}
+
+.chapter-body {
+    padding: 70px 0;
+}
+/* Back-to-homepage link in nav — replaces the centered ul on chapter pages */
+.chapter-page-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 5px 0;
+}
+.chapter-page-nav:hover {
+    color: #c0392b !important;
+    text-decoration: none;
+}
+.nav-scroll .chapter-page-nav {
+    color: #111 !important;
+}
+.nav-scroll .chapter-page-nav:hover {
+    color: #c0392b !important;
+}
+html[data-theme="dark"] .chapter-page-nav,
+html[data-theme="dark"] .nav-scroll .chapter-page-nav {
+    color: #fff !important;
+}
+html[data-theme="dark"] .chapter-page-nav:hover,
+html[data-theme="dark"] .nav-scroll .chapter-page-nav:hover {
+    color: #c0392b !important;
+}
+
+.chapter-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #748182;
+    margin-bottom: 30px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.chapter-back:hover {
+    color: #c0392b;
+    text-decoration: none;
+}
+html[data-theme="dark"] .chapter-back {
+    color: #b0b6c1;
+}
+html[data-theme="dark"] .chapter-back:hover {
+    color: #c0392b;
+}
+
+.chapter-section {
+    margin-bottom: 50px;
+}
+.chapter-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 8px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #c0392b;
+    display: inline-block;
+}
+.chapter-section .section-lead {
+    color: #748182;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 14px 0 24px;
+}
+html[data-theme="dark"] .chapter-section h2 {
+    color: #f5f5f5;
+}
+html[data-theme="dark"] .chapter-section .section-lead {
+    color: #b0b6c1;
+}
+
+/* Screenshot grid */
+.shot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+}
+.shot-card {
+    background: #fff;
+    box-shadow: 0 8px 22px -6px rgba(0,0,0,0.12);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: block;
+    text-decoration: none;
+}
+.shot-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px -8px rgba(0,0,0,0.22);
+    text-decoration: none;
+}
+.shot-card .shot-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: #1c1c1c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    overflow: hidden;
+    position: relative;
+}
+.shot-card .shot-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.shot-card .shot-img .shot-placeholder {
+    text-align: center;
+    padding: 0 20px;
+}
+.shot-card .shot-img .shot-placeholder i {
+    display: block;
+    font-size: 32px;
+    margin-bottom: 8px;
+    opacity: 0.5;
+}
+.shot-card .shot-meta {
+    padding: 14px 18px;
+}
+.shot-card .shot-meta h5 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 4px;
+}
+.shot-card .shot-meta p {
+    color: #748182;
+    font-size: 12px;
+    margin: 0;
+    line-height: 1.5;
+}
+html[data-theme="dark"] .shot-card {
+    background: #1a1d27;
+    box-shadow: 0 8px 22px -6px rgba(0,0,0,0.55);
+}
+html[data-theme="dark"] .shot-card .shot-meta h5 {
+    color: #f5f5f5;
+}
+html[data-theme="dark"] .shot-card .shot-meta p {
+    color: #b0b6c1;
+}
+
+/* Findings list */
+.findings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.findings-list li {
+    background: #fff;
+    padding: 18px 22px 18px 28px;
+    margin-bottom: 12px;
+    border-left: 3px solid #c0392b;
+    box-shadow: 0 6px 18px -6px rgba(0,0,0,0.1);
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444;
+}
+.findings-list li strong {
+    color: #222;
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+html[data-theme="dark"] .findings-list li {
+    background: #1a1d27;
+    color: #b0b6c1;
+    box-shadow: 0 6px 18px -6px rgba(0,0,0,0.55);
+}
+html[data-theme="dark"] .findings-list li strong {
+    color: #f5f5f5;
+}
+
+/* Key/value detail rows on chapter pages */
+.kv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 0 0 24px;
+}
+.kv-grid .kv {
+    background: #fff;
+    padding: 14px 18px;
+    box-shadow: 0 6px 18px -6px rgba(0,0,0,0.08);
+}
+.kv-grid .kv .k {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+.kv-grid .kv .v {
+    color: #222;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Courier New', monospace;
+    word-break: break-all;
+}
+html[data-theme="dark"] .kv-grid .kv {
+    background: #1a1d27;
+    box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5);
+}
+html[data-theme="dark"] .kv-grid .kv .k {
+    color: #8a91a0;
+}
+html[data-theme="dark"] .kv-grid .kv .v {
+    color: #f5f5f5;
+}
+
+/* =========================================================
+   WALKTHROUGH (chronological step-by-step with screenshots)
+   ========================================================= */
+.walkthrough {
+    position: relative;
+}
+/* Vertical timeline line down the left, behind the step numbers */
+.walkthrough::before {
+    content: "";
+    position: absolute;
+    left: 19px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #c0392b 0%, rgba(192,57,43,0.2) 100%);
+}
+@media (max-width: 768px) {
+    .walkthrough::before { left: 14px; }
+}
+
+.wt-step {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 60px;
+}
+@media (max-width: 768px) {
+    .wt-step { padding-left: 44px; margin-bottom: 44px; }
+}
+
+.wt-step-num {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #c0392b;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 6px var(--wt-bg, #fff);
+    z-index: 1;
+}
+@media (max-width: 768px) {
+    .wt-step-num { width: 30px; height: 30px; font-size: 12px; box-shadow: 0 0 0 4px var(--wt-bg, #fff); }
+}
+html[data-theme="dark"] .wt-step-num { box-shadow: 0 0 0 6px #0f1115; }
+@media (max-width: 768px) {
+    html[data-theme="dark"] .wt-step-num { box-shadow: 0 0 0 4px #0f1115; }
+}
+
+.wt-step-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #222;
+    margin: 4px 0 6px;
+    line-height: 1.3;
+}
+.wt-step-tag {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #c0392b;
+    margin-bottom: 4px;
+}
+.wt-step-summary {
+    color: #748182;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 18px;
+}
+.wt-step-summary code {
+    background: #f4f4f4;
+    color: #1c1c1c;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+}
+.wt-shot {
+    display: block;
+    background: #1c1c1c;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -8px rgba(0,0,0,0.18);
+    cursor: zoom-in;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+.wt-shot:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px -8px rgba(0,0,0,0.28);
+}
+.wt-shot img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.wt-shot-caption {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #999;
+    margin-top: 10px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .wt-step-title { color: #f5f5f5; }
+html[data-theme="dark"] .wt-step-summary { color: #b0b6c1; }
+html[data-theme="dark"] .wt-step-summary code {
+    background: #2a2f3c;
+    color: #f5f5f5;
+}
+html[data-theme="dark"] .wt-shot {
+    background: #1a1d27;
+    box-shadow: 0 10px 30px -8px rgba(0,0,0,0.55);
+}
+html[data-theme="dark"] .wt-shot-caption { color: #8a91a0; }
+
+/* Pair layout for related screenshots (13a + 13b side by side on desktop) */
+.wt-shot-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+@media (max-width: 768px) {
+    .wt-shot-pair { grid-template-columns: 1fr; }
+}
