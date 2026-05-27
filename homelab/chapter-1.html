@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="../css/font-awesome.min.css">
         <link rel="stylesheet" href="../css/et-line.css">
         <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/theme.css?v=15">
+        <link rel="stylesheet" href="../css/theme.css?v=16">
         <script>(function(){try{var t=localStorage.getItem('ik-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
     </head>
     <body>
@@ -44,6 +44,7 @@
                     <ul class="nav navbar-nav nav-centered">
                         <li><a href="../index.html#homelab" class="chapter-page-nav"><i class="fa fa-angle-left" aria-hidden="true"></i> Back to homepage</a></li>
                     </ul>
+                    <div class="nav-spacer-right" aria-hidden="true"></div>
                 </div>
             </div>
         </nav>
@@ -52,14 +53,11 @@
             <div class="container">
                 <span class="ch-label">Chapter 01 — Build</span>
                 <h1>Lab Build &amp; Domain Standup</h1>
-                <p class="ch-sub">Spinning up Active Directory domain controller, joining client workstations, and seeding the environment with users, OUs for mock enterprise company "ImranKHomelab"</p>
+                <p class="ch-sub">Spinning up the Active Directory domain controller, joining client workstations, and seeding the environment with users, OUs, and a deliberately weak service account so later chapters have something realistic to attack.</p>
                 <div class="chapter-nav">
                     <span class="chnav-btn chnav-disabled" aria-disabled="true"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous Chapter</span>
                     <a class="chnav-btn chnav-primary" href="../index.html#homelab"><i class="fa fa-th" aria-hidden="true"></i> See All Chapters</a>
-                    <!---
                     <a class="chnav-btn" href="chapter-2.html">Next Chapter <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-
-                -->
                 </div>
             </div>
         </section>
@@ -83,7 +81,7 @@
                     <!-- Walkthrough -->
                     <div class="chapter-section">
                         <h2>Build Walkthrough</h2>
-                        <p class="section-lead">
+                        <p class="section-lead">End-to-end walkthrough of standing up the domain — from creating the virtual network through getting the first user logged in. Click any screenshot to enlarge.</p>
 
                         <div class="walkthrough">
 
@@ -92,9 +90,9 @@
                                 <span class="wt-step-num">1</span>
                                 <span class="wt-step-tag">Networking</span>
                                 <h3 class="wt-step-title">Create the LabNet virtual network</h3>
-                                <p class="wt-step-summary">In VirtualBox, created an isolated NAT network called <code>LabNet</code> on the <code>10.0.2.0/24</code> subnet. This will be the private wire that DC01 and all client VMs share.</p>
+                                <p class="wt-step-summary">In VirtualBox, created an isolated NAT network called <code>LabNet</code> on the <code>10.0.2.0/24</code> subnet with DHCP enabled. This will be the private wire that DC01 and all client VMs share, isolated from the host network and the public internet.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/1.png"><img src="../img/homelab/ch1/1.png" alt="VirtualBox NAT Network LabNet"></a>
-                                
+                                <div class="wt-shot-caption">VirtualBox NAT Networks — LabNet, 10.0.2.0/24, DHCP enabled</div>
                             </div>
 
                             <!-- Step 2 -->
@@ -102,9 +100,9 @@
                                 <span class="wt-step-num">2</span>
                                 <span class="wt-step-tag">Networking</span>
                                 <h3 class="wt-step-title">Attach the Windows Server VM to LabNet</h3>
-                                <p class="wt-step-summary">On VM that will soon be our DC, changed Adapter 1 from the default NAT to the new <code>LabNet</code> NAT network. This puts the server on the private lab subnet where it can serve as DHCP/DNS for everything else.</p>
+                                <p class="wt-step-summary">On the future DC VM, changed Adapter 1 from the default NAT to the new <code>LabNet</code> NAT network. This puts the server on the private lab subnet where it can serve as DHCP/DNS for everything else.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/2.png"><img src="../img/homelab/ch1/2.png" alt="VM Network adapter attached to LabNet"></a>
-                               
+                                <div class="wt-shot-caption">VM Settings → Network → Adapter 1 attached to NAT Network "LabNet"</div>
                             </div>
 
                             <!-- Step 3 -->
@@ -112,9 +110,9 @@
                                 <span class="wt-step-num">3</span>
                                 <span class="wt-step-tag">Server Setup</span>
                                 <h3 class="wt-step-title">Rename the server to DC01</h3>
-                                <p class="wt-step-summary">Inside Windows Server, used <code>Rename-Computer -NewName DC01</code> to give the box a meaningful name before promotion.</p>
+                                <p class="wt-step-summary">Inside Windows Server, used <code>Rename-Computer -NewName DC01</code> to give the box a meaningful name before promotion. A reboot is required for the change to take effect.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/3.png"><img src="../img/homelab/ch1/3.png" alt="PowerShell Rename-Computer DC01"></a>
-                                
+                                <div class="wt-shot-caption">PowerShell — Rename-Computer -NewName DC01</div>
                             </div>
 
                             <!-- Step 4 -->
@@ -122,7 +120,7 @@
                                 <span class="wt-step-num">4</span>
                                 <span class="wt-step-tag">Networking</span>
                                 <h3 class="wt-step-title">Assign DC01 a static IP and self-pointing DNS</h3>
-                                <p class="wt-step-summary">Set a static IPv4 address of <code>10.0.2.10</code> with gateway <code>10.0.2.1</code>, then pointed the DNS client at <code>127.0.0.1</code> so the DC resolves itself once promoted. A domain controller without stable IP + DNS will not behave as expected.</p>
+                                <p class="wt-step-summary">Set a static IPv4 address of <code>10.0.2.10</code> with gateway <code>10.0.2.1</code>, then pointed the DNS client at <code>127.0.0.1</code> so the DC resolves itself once promoted. A domain controller without stable IP + DNS is asking for replication and authentication weirdness later.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/4.png"><img src="../img/homelab/ch1/4.png" alt="Static IP and DNS configuration"></a>
                                 <div class="wt-shot-caption">New-NetIPAddress + Set-DnsClientServerAddress — confirmed via Get-NetIPConfiguration</div>
                             </div>
@@ -132,8 +130,9 @@
                                 <span class="wt-step-num">5</span>
                                 <span class="wt-step-tag">AD Role</span>
                                 <h3 class="wt-step-title">Install the AD-Domain-Services and DNS roles</h3>
-                                <p class="wt-step-summary"><code>Install-WindowsFeature AD-Domain-Services, DNS -IncludeManagementTools</code> stages the tools needed to utilize ADDS and DNS services. This only installs; the next step promotes the server.</p>
-                                <a class="wt-shot" href="../img/homelab/ch1/5.png"><img src="../img/homelab/ch1/5.png" alt="Install-WindowsFeature AD-Domain-Services DNS"></a>            
+                                <p class="wt-step-summary"><code>Install-WindowsFeature AD-Domain-Services, DNS -IncludeManagementTools</code> stages the role binaries and tooling. No restart needed yet — this only installs; the next step actually promotes the server.</p>
+                                <a class="wt-shot" href="../img/homelab/ch1/5.png"><img src="../img/homelab/ch1/5.png" alt="Install-WindowsFeature AD-Domain-Services DNS"></a>
+                                <div class="wt-shot-caption">Install-WindowsFeature returns Success — AD DS and DNS Server roles staged</div>
                             </div>
 
                             <!-- Step 6 -->
@@ -141,8 +140,9 @@
                                 <span class="wt-step-num">6</span>
                                 <span class="wt-step-tag">AD Forest</span>
                                 <h3 class="wt-step-title">Promote DC01 to the first domain controller</h3>
-                                <p class="wt-step-summary"><code>Install-ADDSForest</code> creates the brand-new forest <code>imrankhomelab.local</code> with NetBIOS <code>IMRANKHOMELAB</code>. Set a Safe Mode Administrator (breakglass) password stored separately from any user account. The DNS delegation warning is expected in a self-contained lab.</p>
-                                <a class="wt-shot" href="../img/homelab/ch1/6.png"><img src="../img/homelab/ch1/6.png" alt="Install-ADDSForest creating imrankhomelab.local"></a>                               
+                                <p class="wt-step-summary"><code>Install-ADDSForest</code> creates the brand-new forest <code>imrankhomelab.local</code> with NetBIOS <code>IMRANKHOMELAB</code>. Set a Safe Mode Administrator (breakglass) password stored separately from any user account. The DNS delegation warning is expected in a self-contained lab — there is no parent DNS zone above us.</p>
+                                <a class="wt-shot" href="../img/homelab/ch1/6.png"><img src="../img/homelab/ch1/6.png" alt="Install-ADDSForest creating imrankhomelab.local"></a>
+                                <div class="wt-shot-caption">Install-ADDSForest — operation completed successfully, server reboots into a fully-promoted DC</div>
                             </div>
 
                             <!-- Step 7 -->
@@ -150,7 +150,7 @@
                                 <span class="wt-step-num">7</span>
                                 <span class="wt-step-tag">Verification</span>
                                 <h3 class="wt-step-title">Confirm the forest, NetBIOS name, and core services</h3>
-                                <p class="wt-step-summary">After reboot, verified the forest is live: <code>Get-ADDomain</code> returns the correct DNSRoot and NetBIOS name, <code>Get-ADForest</code> shows the schema and the four core services — ADWS, DNS, KDC, Netlogon are all running.</p>
+                                <p class="wt-step-summary">After reboot, verified the forest is live: <code>Get-ADDomain</code> returns the correct DNSRoot and NetBIOS name, <code>Get-ADForest</code> shows the schema and naming masters, and the four core services — ADWS, DNS, KDC, Netlogon — are all running. This is the "is the DC actually a DC?" smoke test.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/7.png"><img src="../img/homelab/ch1/7.png" alt="Forest, domain, and service verification"></a>
                                 <div class="wt-shot-caption">Get-ADDomain, Get-ADForest, and Get-Service ADWS,KDC,Netlogon,DNS — all green</div>
                             </div>
@@ -162,7 +162,7 @@
                                 <h3 class="wt-step-title">Create the first Organizational Unit</h3>
                                 <p class="wt-step-summary">Opened Active Directory Users and Computers and started building OUs to mimic an enterprise structure. First one: <code>IT</code>, directly under <code>imrankhomelab.local</code>. Intentionally left "Protect container from accidental deletion" unchecked so the lab is easy to tear down later.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/8.png"><img src="../img/homelab/ch1/8.png" alt="Creating IT Organizational Unit"></a>
-                                
+                                <div class="wt-shot-caption">New Object → Organizational Unit → IT</div>
                             </div>
 
                             <!-- Step 9 -->
@@ -172,7 +172,7 @@
                                 <h3 class="wt-step-title">Build out a realistic OU hierarchy</h3>
                                 <p class="wt-step-summary">Created the full set of department OUs to mirror a small enterprise: <code>Executives</code>, <code>Finance</code>, <code>HR</code>, <code>IT</code>, <code>Servers</code>, <code>ServiceAccounts</code>, <code>Users</code>, and <code>Workstations</code>. Real environments have this kind of separation; the lab now does too, which means later GPO scoping and delegation exercises will be meaningful.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/9.png"><img src="../img/homelab/ch1/9.png" alt="Full OU hierarchy in ADUC"></a>
-                                
+                                <div class="wt-shot-caption">Full OU tree under imrankhomelab.local</div>
                             </div>
 
                             <!-- Step 10 -->
@@ -180,7 +180,7 @@
                                 <span class="wt-step-num">10</span>
                                 <span class="wt-step-tag">Groups</span>
                                 <h3 class="wt-step-title">Create security groups inside each OU</h3>
-                                <p class="wt-step-summary">Inside <code>Executives</code>, created a Global Security group called <code>Executives</code>. Repeated this pattern across the other OUs so that permissions can be assigned to groups rather than individual users.</p>
+                                <p class="wt-step-summary">Inside <code>Executives</code>, created a Global Security group called <code>Executives</code>. Repeated this pattern across the other OUs (HelpDesk, IT-Admins, etc.) so that permissions can be assigned to groups rather than individual users — the way it should be done in production.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/10.png"><img src="../img/homelab/ch1/10.png" alt="Create security group Executives"></a>
                                 <div class="wt-shot-caption">New Object → Group → Executives (Global / Security)</div>
                             </div>
@@ -190,7 +190,7 @@
                                 <span class="wt-step-num">11</span>
                                 <span class="wt-step-tag">Users</span>
                                 <h3 class="wt-step-title">Seed user accounts across departments</h3>
-                                <p class="wt-step-summary">Created realistic user accounts for each department - names, displays, office (New York), and dropped them into the correct OUs. Examples: Clyde Henata in IT, plus the rest of the users. </p>
+                                <p class="wt-step-summary">Created realistic user accounts for each department — names, displays, office (New York), and dropped them into the correct OUs. Examples: Clyde Sandor in IT, Shia Lee, Snola Banee, plus the rest of the roster (mchang, ppatel, lgarcia, orashid, jsmith and others).</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/11.png"><img src="../img/homelab/ch1/11.png" alt="Create user Clyde Sandor"></a>
                                 <div class="wt-shot-caption">New User → Clyde Sandor in IT OU</div>
                             </div>
@@ -199,38 +199,28 @@
                             <div class="wt-step">
                                 <span class="wt-step-num">12</span>
                                 <span class="wt-step-tag">Privilege Design (intentionally weak)</span>
-                                <h3 class="wt-step-title">Assign group memberships - including some that shouldn't exist</h3>
-                                <p class="wt-step-summary">Added users to group memberships. Some assignments are intentional malpractice such as regular users assigned as <code>Domain Admins</code>, mimicking the flat-privilege environments that attackers love. This is the weak posture later chapters will demonstrate breaking, then harden.</p>
+                                <h3 class="wt-step-title">Assign group memberships — including some that shouldn't exist</h3>
+                                <p class="wt-step-summary">Added users to group memberships. Some assignments are intentionally bad: regular users sit in <code>Domain Admins</code>, mimicking the flat-privilege environments that attackers love. This is the weak posture later chapters will demonstrate breaking, then harden.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/12.png"><img src="../img/homelab/ch1/12.png" alt="User added to Domain Admins"></a>
-                                
+                                <div class="wt-shot-caption">Clyde Sandor — Member Of → Domain Admins (intentionally poor design)</div>
                             </div>
 
-                             <!-- Step 13 -->
+                            <!-- Step 13 -->
                             <div class="wt-step">
                                 <span class="wt-step-num">13</span>
-                                <span class="wt-step-tag">Service Account Creation</span>
-                                <h3 class="wt-step-title">Create a service account</h3>
-                                <p class="wt-step-summary">Created a service account for Mike Chang's account which is also a Domain Admin. Note the SQL service account which we will compromise in future chapters</p>
-                                <a class="wt-shot" href="../img/homelab/ch1/12a.png"><img src="../img/homelab/ch1/12a.png" alt="User added to Domain Admins"></a>
-                                
-                            </div>
-
-                            <!-- Step 14 -->
-                            <div class="wt-step">
-                                <span class="wt-step-num">14</span>
                                 <span class="wt-step-tag">DHCP</span>
                                 <h3 class="wt-step-title">Stand up DHCP on the DC for client auto-config</h3>
-                                <p class="wt-step-summary">Turned off DHCP server in hypervisor LabNet settings from step 1. Installed the DHCP role, authorized it in AD to prevent rogue DHCP servers, then created a scope <code>LabNet-Scope</code> covering <code>10.0.2.100 → 10.0.2.200</code>.</p>
+                                <p class="wt-step-summary">Installed the DHCP role, authorized it in AD to prevent rogue DHCP servers, then created a scope <code>LabNet-Scope</code> covering <code>10.0.2.100 → 10.0.2.200</code>. Set scope options so clients auto-discover the router (<code>10.0.2.1</code>), the DNS server (<code>10.0.2.10</code> = DC01), and the search domain (<code>imrankhomelab.local</code>). With this in place, new client VMs join the lab network and find the DC without manual config.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/13.png"><img src="../img/homelab/ch1/13.png" alt="DHCP install and scope configuration"></a>
-                                
+                                <div class="wt-shot-caption">Install-WindowsFeature DHCP → Add-DhcpServerInDC → Add-DhcpServerv4Scope → Set-DhcpServerv4OptionValue</div>
                             </div>
 
-                            <!-- Step 15a + 15b -->
+                            <!-- Step 13a + 13b -->
                             <div class="wt-step">
-                                <span class="wt-step-num">15</span>
+                                <span class="wt-step-num">14</span>
                                 <span class="wt-step-tag">Client Side</span>
-                                <h3 class="wt-step-title">Workstation prepped to join the domain</h3>
-                                <p class="wt-step-summary">On a fresh client VM, after the client picked up DHCP, repointed DNS at <code>10.0.2.10</code>, flushed the cache, and ran <code>nslookup imrankhomelab.local</code> — resolution succeeded against DC01. With DNS healthy, opened System Properties → begin the domain join.</p>
+                                <h3 class="wt-step-title">Validate DNS resolution from a client and start domain join</h3>
+                                <p class="wt-step-summary">On a fresh client VM, after the client picked up DHCP, repointed DNS at <code>10.0.2.10</code>, flushed the cache, and ran <code>nslookup imrankhomelab.local</code> — resolution succeeded against DC01. With DNS healthy, opened System Properties → Change settings to begin the domain join.</p>
                                 <div class="wt-shot-pair">
                                     <div>
                                         <a class="wt-shot" href="../img/homelab/ch1/13a.png"><img src="../img/homelab/ch1/13a.png" alt="nslookup imrankhomelab.local success"></a>
@@ -243,9 +233,9 @@
                                 </div>
                             </div>
 
-                            <!-- Step 16 (renamed) -->
+                            <!-- Step 14 (renamed) -->
                             <div class="wt-step">
-                                <span class="wt-step-num">16</span>
+                                <span class="wt-step-num">15</span>
                                 <span class="wt-step-tag">Domain Join</span>
                                 <h3 class="wt-step-title">First client successfully joins the domain</h3>
                                 <p class="wt-step-summary">The client machine (mchang's workstation) receives the "Welcome to the imrankhomelab.local domain" confirmation. That's the moment the lab becomes a real, functioning domain — there's now a relationship between this endpoint and the DC, and the user's domain credentials will work here after reboot.</p>
@@ -253,14 +243,14 @@
                                 <div class="wt-shot-caption">Welcome to the imrankhomelab.local domain — first endpoint joined</div>
                             </div>
 
-                            <!-- Step 17 -->
+                            <!-- Step 15 -->
                             <div class="wt-step">
-                                <span class="wt-step-num">17</span>
+                                <span class="wt-step-num">16</span>
                                 <span class="wt-step-tag">Verification</span>
                                 <h3 class="wt-step-title">Log in as a domain user</h3>
                                 <p class="wt-step-summary">After reboot, logged into the workstation using domain credentials (<code>IMRANKHOMELAB\mchang</code>). The Windows 11 welcome screen authenticating against the DC confirms end-to-end success: DC promoted, DHCP serving, DNS resolving, client joined, domain credential validated.</p>
                                 <a class="wt-shot" href="../img/homelab/ch1/15.png"><img src="../img/homelab/ch1/15.png" alt="Mike Chang logged into domain"></a>
-                               
+                                <div class="wt-shot-caption">Mike Chang — Welcome — first domain login on the joined workstation</div>
                             </div>
 
                         </div>
@@ -268,13 +258,14 @@
 
                     <!-- Findings -->
                     <div class="chapter-section">
-                        <h2>Findings</h2>
+                        <h2>Findings &amp; Intentional Weak Spots</h2>
                         <p class="section-lead">Observations from the build phase — the conditions later chapters will exploit and then remediate.</p>
                         <ul class="findings-list">
                             <li><strong>Flat admin model</strong>Regular users sit inside Domain Admins. No Tier-0 separation. A single endpoint compromise can lead straight to forest takeover.</li>
-                            <li><strong>Service account in step 13 ready to be Kerberoasted</strong>The ServiceAccounts OU will hold an SPN-bound account (<code>svc_sqlserver</code>) with a weak password.</li>
+                            <li><strong>Service account ready to be Kerberoasted</strong>The ServiceAccounts OU will hold an SPN-bound account (<code>svc_sqlserver</code>) with a weak password — the exact attack surface for Chapter 2.</li>
                             <li><strong>No password policy hardening</strong>Default domain password policy only. Complexity is on by default but minimum length is 7 and no fine-grained policies are applied yet.</li>
-                            <li><strong>Audit policy is default</strong>Event logs or any ingestion for that matter has not been set up yet which results in severe blindspots</li>
+                            <li><strong>Audit policy is default</strong>Kerberos service ticket events (4769) are not being captured at a granularity that would detect roasting. Logging gap noted for Chapter 3 to fix.</li>
+                            <li><strong>DHCP and DNS run on the same DC</strong>Common in small environments, fine for the lab, but a reminder that DC01 is a single point of failure for everything client-side.</li>
                         </ul>
                     </div>
 
