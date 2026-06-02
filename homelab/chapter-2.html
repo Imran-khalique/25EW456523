@@ -1,0 +1,272 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Chapter 2 of ImranKHomeLab — A help desk misconfiguration, a zero-day PDF exploit, and a silent Kerberoasting attack that compromised the entire domain.">
+        <title>Chapter 2: The First Attack — ImranKHomeLab</title>
+        <link href="../img/favicon.ico" rel="icon" type="image/png">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/magnific-popup.css">
+        <link rel="stylesheet" href="../css/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/et-line.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/theme.css?v=15">
+        <script>(function(){try{var t=localStorage.getItem('ik-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    </head>
+    <body>
+        <!-- ====== Navigation ====== -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-icon-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="nav-icon-collapse">
+                    <div class="theme-switch-wrap">
+                        <label class="theme-switch" title="Toggle light and dark mode">
+                            <input type="checkbox" class="theme-switch-input" aria-label="Toggle light and dark mode">
+                            <span class="theme-switch-track">
+                                <i class="fa fa-sun-o theme-switch-sun" aria-hidden="true"></i>
+                                <i class="fa fa-moon-o theme-switch-moon" aria-hidden="true"></i>
+                                <span class="theme-switch-thumb"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <ul class="nav navbar-nav nav-centered">
+                        <li><a href="../index.html#homelab" class="chapter-page-nav"><i class="fa fa-angle-left" aria-hidden="true"></i> Back to homepage</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ====== Chapter Hero ====== -->
+        <section class="chapter-hero">
+            <div class="container">
+                <span class="ch-label">Chapter 02 — First Attack</span>
+                <h1>The First Attack</h1>
+                <p class="ch-sub">A routine help desk ticket leads to a fatal misconfiguration. Two weeks later a phishing email and a zero-day PDF exploit hand the attacker Domain Admin rights. The domain falls</p>
+                <div class="chapter-nav">
+                    <a class="chnav-btn" href="chapter-1.html"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous Chapter</a>
+                    <a class="chnav-btn chnav-primary" href="../index.html#homelab"><i class="fa fa-th" aria-hidden="true"></i> See All Chapters</a>
+                    <!--
+                    <a class="chnav-btn" href="chapter-3.html">Next Chapter <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== Chapter Body ====== -->
+        <section class="chapter-body">
+            <div class="container">
+                <div class="col-md-offset-1 col-md-10">
+
+                    <!-- Ethical disclaimer -->
+                    <div class="chapter-section">
+                        <div class="findings-list" style="border-left: 4px solid #888; padding: 14px 18px; background: rgba(128,128,128,0.07); border-radius: 0 4px 4px 0; margin-bottom: 0;">
+                            <strong style="display:block; margin-bottom:6px; font-size:0.82em; text-transform:uppercase; letter-spacing:.06em; color:#888;"><i class="fa fa-shield"></i> &nbsp;Ethical Disclosure</strong>
+                            All activity in this chapter was conducted exclusively within an isolated, self-contained lab environment with no connection to any external network or real infrastructure. The specific steps used to crack the recovered password hash have been intentionally omitted for ethical reasons.
+                        </div>
+                    </div>
+
+                    <!-- Attack overview -->
+                    <div class="chapter-section">
+                        <h2>Attack Overview</h2>
+                        <p class="section-lead"></p>
+                        <div class="kv-grid">
+                            <div class="kv"><span class="k">Actor</span><span class="v">msmith (Help Desk)</span></div>
+                            <div class="kv"><span class="k">Vector</span><span class="v">Zero-day malware in PDF + reverse shell</span></div>
+                            <div class="kv"><span class="k">Account phished</span><span class="v">htanaka (Accountant)</span></div>
+                            <div class="kv"><span class="k">Privilege at entry</span><span class="v">Domain Admin</span></div>
+                           
+                        </div>
+                    </div>
+
+                    <!-- The story walkthrough -->
+                    <div class="chapter-section">
+                        <h2>Attack Walkthrough</h2>
+                        <p class="section-lead"></p>
+
+                        <div class="walkthrough">
+
+                            <!-- Step 1 - INC-001 -->
+                            <div class="wt-step">
+                                <span class="wt-step-num">1</span>
+                                <span class="wt-step-tag">Internal Error</span>
+                                <h3 class="wt-step-title">A Help Desk Ticket Goes Wrong</h3>
+                                <p class="wt-step-summary">
+                                    Hiroshi Tanaka (htanaka), the new company Accountant, calls the help desk on his first day. He can't access the Finance shared folder. The ticket lands with Maroni Smith (msmith), the Help Desk Technician — who is already managing three other open tickets.
+                                    <br><br>
+                                    Maroni opens Active Directory Users and Computers and looks for the fastest fix. The correct answer is to add htanaka to the <code>Finance-Staff</code> security group. Instead, she adds htanaka directly to <strong>Domain Admins</strong>. Ticket closed. 
+                                    <br><br>
+                                    No approval was required. No alert fired. No one reviewed the change. Hiroshi Tanaka - an Accountant with zero IT responsibilities is now one of the most privileged accounts in the entire domain. Nobody notices for two weeks.
+                                </p>
+                                <a class="wt-shot" href="../img/homelab/ch2/1a.png"><img src="../img/homelab/ch2/1a.png" alt="htanaka added to Domain Admins in ADUC"></a>
+                                <div class="wt-shot-caption"></div>
+                            </div>
+
+                            <!-- Step 2 - Phishing -->
+                            <div class="wt-step">
+                                <span class="wt-step-num">2</span>
+                                <span class="wt-step-tag">Initial Access</span>
+                                <h3 class="wt-step-title">A Phishing Email Lands In htanaka's Inbox</h3>
+                                <p class="wt-step-summary">
+                                    Two weeks later, Hiroshi receives an email appearing to come from a known vendor. Subject: <em>"INV: Your invoice is ready for review."</em> The sender name looks right. The email body is professional. The attachment is named <code>INV OVERDUE.pdf</code>.
+                                    <br><br>
+                                    Hiroshi has received no security awareness training. He has no framework for evaluating whether an attachment is suspicious. He opens it.
+                                    <br><br>
+                                    The PDF contains a <strong>zero-day exploit</strong> targeting a vulnerability in Adobe Reader. When htanaka opens the file, a cmd windows opens and then quickly closes. The document appears blank or slow to load. He assumes it's a formatting issue and closes it. In the background, shellcode has already executed silently within the Adobe Reader process.
+                                    <br><br>
+                                    Windows Defender scanned the file on download and found nothing. It monitored the process behavior and found nothing. No signature existed for this vulnerability. No behavioral pattern had been documented. 
+                                </p>
+                                <div class="wt-shot-caption" style="padding: 12px 16px; background: rgba(192,57,43,0.08); border-left: 3px solid #c0392b; border-radius: 0 4px 4px 0; margin-bottom: 16px;">
+                                    <strong>Why zero-days bypass Defender:</strong> Defender compares activity against databases of known threats. A zero-day has never been observed or documented. It produces no known signature. NGFW (Next Gen Firewalls aim to close that gap)
+                                </div>
+                            </div>
+
+                            <!-- Step 3 - Reverse shell -->
+                            <div class="wt-step">
+                                <span class="wt-step-num">3</span>
+                                <span class="wt-step-tag">Foothold</span>
+                                <h3 class="wt-step-title">Reverse Shell Established - Attacker Is Inside</h3>
+                                <p class="wt-step-summary">
+                                    The shellcode connects back to the attacker. Outbound connections are almost never blocked because that's how normal internet traffic works. The firewall sees WS01 making an outbound connection and lets it through.
+                                    <br><br>
+                                    The attacker's machine accepts the connection. A full command shell opens, running as <code>htanaka</code> on WS01, from anywhere in the world. The attacker is now inside ImranKHomeLab's network.
+                                    <br><br>
+                                    
+                                </p>
+                            </div>
+
+                            <!-- Step 4 - Recon and nmap -->
+                            <div class="wt-step">
+                                <span class="wt-step-num">4</span>
+                                <span class="wt-step-tag">Reconnaissance</span>
+                                <h3 class="wt-step-title">Network scan identifies DC01 and WS01</h3>
+                                <p class="wt-step-summary">
+                                    From the attacker machine (Kali Linux, representing the attacker's machine), an nmap scan maps the entire LabNet subnet. DC01 is identified at <code>10.0.2.10</code> by the presence of ports 88 (Kerberos), 389 (LDAP), 445 (SMB), and 3268 (Global Catalog)- the signature port pattern of a Windows domain controller. The domain name <code>imrankhomelab.local</code> is visible in the LDAP service banner. WS01 is identified at <code>10.0.2.100</code>.
+                                </p>
+                                <a class="wt-shot" href="../img/homelab/ch2/1.png"><img src="../img/homelab/ch2/1.png" alt="nmap scan output showing DC01 and WS01"></a>
+                               
+                                <div class="wt-shot-caption"></div>
+                            </div>
+
+                            <!-- Step 5 - Credential validation -->
+                            <div class="wt-step">
+                                <span class="wt-step-num">5</span>
+                                <span class="wt-step-tag">Credential Validation</span>
+                                <h3 class="wt-step-title">Stolen credentials confirmed valid</h3>
+                                <p class="wt-step-summary">
+                                    The attacker uses htanaka's credentials to request a Kerberos Ticket Granting Ticket directly from DC01. The domain controller responds by issuing a valid TGT. The stolen credentials are confirmed active.
+                                    <br><br>
+                                  
+                                    Note: Windows Server 2025 enforces SMB signing and LDAP channel binding by default. This hardening slows down common attack tooling, even if it doesn't stop an attacker with valid credentials.
+                                </p>
+                            </div>
+
+                            <!-- Step 6 - SPN enumeration -->
+                            <div class="wt-step">
+                                <span class="wt-step-num">6</span>
+                                <span class="wt-step-tag">Kerberoasting. Stage 1</span>
+                                <h3 class="wt-step-title">SPN enumeration finds svc_sqlserver</h3>
+                                <p class="wt-step-summary">
+                                    The attacker queries the domain for all accounts with a Service Principal Name registered. SPNs identify service accounts whose Kerberos tickets can be requested by any authenticated user and cracked offline. Any domain user can run this query.
+                                    <br><br>
+                                    The query returns <code>svc_sqlserver</code> with SPN <code>MSSQLSvc/sql01.imrankhomelab.local:1433</code>. The account had never logged in. Its password had not been changed since creation. It was a forgotten service account, configured during the company's initial setup and never revisited.
+                                </p>
+                            </div>
+
+                            <!-- Step 7 - Kerberoasting -->
+                            <div class="wt-step">
+                                <span class="wt-step-num">7</span>
+                                <span class="wt-step-tag">Kerberoasting. Stage 2</span>
+                                <h3 class="wt-step-title">Service ticket requested and hash captured</h3>
+                                <p class="wt-step-summary">
+                                    The attacker requests a Kerberos service ticket for <code>svc_sqlserver</code> using htanaka's credentials. The DC processes this as a completely legitimate Kerberos operation The returned ticket is encrypted with svc_sqlserver's password as the key.
+                                    <br><br>
+                                    The hash is saved to a file for offline cracking.
+                                    <br><br>
+                                    Examining the raw hash file revealed an important finding: the hash began with <code>$krb5tgs$18$</code> rather than <code>$krb5tgs$23$</code>. Windows Server 2025 issued an <strong>AES-256 encrypted ticket</strong> (etype 18) rather than the older RC4 format (etype 23). AES-256 is significantly harder to crack than RC4. this is a genuine security improvement in Server 2025 over earlier versions. It required a different cracking mode and slowed the process. 
+                                </p>
+                            </div>
+
+                            <!-- Step 8 - Hash cracked -->
+                            <div class="wt-step">
+                                <span class="wt-step-num">8</span>
+                                <span class="wt-step-tag">Kerberoasting. Stage 3</span>
+                                <h3 class="wt-step-title">Password cracked in 11 seconds</h3>
+                                <p class="wt-step-summary">
+                                    The hash is cracked offline using rockyou.txt, a 14 million entry wordlist derived from the 2009 RockYou data breach, which exposed real passwords used by real people. Every password in the list is something a human actually chose.
+                                    <br><br>
+                                    Despite AES-256 encryption, the password <strong>Password123</strong> appeared early in the wordlist. The crack completed in 11 seconds.                        
+                                </p>
+                                <a class="wt-shot" href="../img/homelab/ch2/SQL Service Account Password Hacked.png"><img src="../img/homelab/ch2/SQL Service Account Password Hacked.png" alt="Hashcat cracking svc_sqlserver password"></a>
+                                <div class="wt-shot-caption"></div>
+                                                             
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                   
+
+                    <!-- Findings -->
+                    <div class="chapter-section">
+                        <h2>Findings</h2>
+                        <p class="section-lead">In the next chapters, we will begin hardening this isolated environment</p>
+                        <ul class="findings-list">
+                            <li><strong>No change management for privileged groups</strong>A help desk technician added a Finance employee to Domain Admins with no approval, alert, or review.</li>
+                            <li><strong>No security awareness training</strong>htanaka had no framework to evaluate a suspicious email.</li>
+                            <li><strong>Default Defender with no ASR rules</strong>Signature-based detection is blind to zero-days. Attack Surface Reduction rules can block exploit behaviors behaviorally even when no signature exists, they were not configured.</li>
+                            <li><strong>Weak service account password despite AES-256 encryption</strong>Server 2025 issued AES-256 Kerberos tickets, a massive improvement over RC4 but It didn't matter. Password123 is in every combolist ever created.</li>
+                            <li><strong>No audit logging or SIEM</strong>Eight distinct detectable events fired. None were captured. The attack was not sophisticated enough to be undetectable. it was undetected because nobody was looking.</li>
+                            <li><strong>svc_sqlserver never rotated</strong>A forgotten service account with a weak password and an active SPN is a standing invitation to Kerberoasting. It sat untouched from initial setup until the attacker found it.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Chapter nav bottom -->
+                    <div class="chapter-nav" style="margin-top: 40px; margin-bottom: 10px;">
+                        <a class="chnav-btn" href="chapter-1.html"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous Chapter</a>
+                        <a class="chnav-btn chnav-primary" href="../index.html#homelab"><i class="fa fa-th" aria-hidden="true"></i> See All Chapters</a>
+                        <a class="chnav-btn" href="chapter-3.html">Next Chapter <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container text-center">
+                <div class="row">
+                    <p>&copy; 2026 Imran Khalique. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/jquery.magnific-popup.min.js"></script>
+        <script src="../js/theme.js?v=7"></script>
+        <script>
+            (function ($) {
+                if (typeof $ === 'undefined' || !$.fn.magnificPopup) { return; }
+                $('.walkthrough').magnificPopup({
+                    delegate: 'a.wt-shot',
+                    type: 'image',
+                    gallery: { enabled: true, navigateByImgClick: true, preload: [0, 1] },
+                    mainClass: 'mfp-fade'
+                });
+            })(jQuery);
+        </script>
+    </body>
+</html>
