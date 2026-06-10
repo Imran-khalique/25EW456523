@@ -19,19 +19,21 @@
         flex: 1 1 auto;
         text-align: center;
     }
-    /* Invisible right-side spacer that mirrors the switch width on the left.
-       Without this, .nav-centered (flex: 1) takes the leftover space which is
-       offset to the right of the switch — the menu centers within that offset
-       space, looking visibly off-center on smaller screens like a 13" MacBook.
-       The spacer balances the layout so the menu centers relative to the
-       viewport, not the leftover space. */
+    /* Right-side spacer mirrors the theme switch on the left so the
+       centered nav sits in the true middle of the container instead of
+       being pushed right by the switch's width. Without this the nav
+       appears off-center on narrower desktop widths (e.g. 13" MacBook). */
     .navbar-default .navbar-collapse > .nav-spacer-right {
         flex: 0 0 auto;
-        width: 73px; /* switch wrap is ~58px track + 15px left padding */
+        width: 73px; /* 58px switch track + 15px left padding on .theme-switch-wrap */
     }
-}
-@media (max-width: 767px) {
-    .nav-spacer-right { display: none; }
+    /* Bootstrap's default .navbar-nav > li is float:left, which left-aligns
+       the items inside our centered <ul>. Switching them to inline-block lets
+       the parent's text-align:center actually center the visible items. */
+    .navbar-default .navbar-nav.nav-centered > li {
+        float: none;
+        display: inline-block;
+    }
 }
 /* Tighten nav item spacing so all items + the switch fit on one line.
    The template's default is margin: 25px 20px 0 — pulling that in to 8px on
